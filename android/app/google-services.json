@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "182629366351",
+    "firebase_url": "https://crypto-alerts-ce595.firebaseio.com",
+    "project_id": "crypto-alerts-ce595",
+    "storage_bucket": "crypto-alerts-ce595.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182629366351:android:4934c9f425f5d125e5483a",
+        "android_client_info": {
+          "package_name": "com.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182629366351-0gm05q8nhhblgo83th6ajt4ft6c2r14l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjEwjbgkx7pU5UKLsB_1uLSmHeB82-Qns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182629366351-0gm05q8nhhblgo83th6ajt4ft6c2r14l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
