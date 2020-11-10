@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import coinListReducer from './coinlist/coinlist.reducer';
+import countryListReducer from './country-list/country-list.reducer';
 import alertsReducer from './alerts/alerts.reducer';
 
 
 const rootReducer = combineReducers({
-    coinList: coinListReducer,
+    countryList: countryListReducer,
     alerts: alertsReducer
 });
 

@@ -5,10 +5,10 @@ import { createStructuredSelector } from 'reselect';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { connect } from 'react-redux';
 import { headers, adminUrl } from '../utils/constants';
-import { selectCoinListData } from '../redux/coinlist/coinlist.selectors';
+import { selectCountryListData } from '../redux/country-list/country-list.selectors';
 import { selectFirebaseToken } from '../redux/alerts/alerts.selectors';
 import { AppState } from '../redux/root-reducer';
-import ICoin from '../models/coincap/ICoin';
+import ICountry from '../models/apicorona/ICountry';
 import { IAlert, AlertCondition } from 'src/models/admin/IAlert';
 
 
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 });
 
 interface IReduxStateProps {
-    coinList: Array<ICoin>,
+    countryList: Array<ICountry>,
     cloudMessageToken : string | null
 }
 
@@ -73,7 +73,7 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
     }
     
     render() {
-        const { coinList } = this.props;
+        const { countryList } = this.props;
 
         return (
             <View style={{flex: 1}}>
@@ -82,7 +82,7 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
                     selectedValue={this.state.selectedCoin}
                     onValueChange={(itemValue, itemIndex) => this.setState({selectedCoin: itemValue.toString()}) }
                 >
-                    {coinList.map((item: ICoin) => 
+                    {countryList.map((item: ICountry) => 
                         <Picker.Item label={`${item.name} (${item.symbol})`} value={item.symbol} /> 
                     )}
                 </Picker>
@@ -116,7 +116,7 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
 }
 
 const mapStateToProps = createStructuredSelector<AppState, IReduxStateProps>({
-    coinList: selectCoinListData,
+    countryList: selectCountryListData,
     cloudMessageToken: selectFirebaseToken
 });
 

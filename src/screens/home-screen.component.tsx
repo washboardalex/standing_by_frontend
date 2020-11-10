@@ -9,7 +9,7 @@ import { selectFirebaseToken } from '../redux/alerts/alerts.selectors';
 import { fArgReturn, fEmptyReturn } from '../utils/types';
 import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../redux/alerts/alerts.actions';
 
-import CoinList from '../components/coin-list.component';
+import CountryList from '../components/country-list';
 
 interface IReduxStateProps {
     firebaseCloudMessageToken: null | string
@@ -42,7 +42,7 @@ class HomeScreen extends React.Component<HomeScreenProps>{
 
         return (
             <View style={{ flex: 1 }}>
-                <CoinList />
+                <CountryList />
                 <View style={{position: 'absolute', bottom: 0, left: 0, right: 0}}>
                     <Button title='Add a New Alert' onPress={() => navigation.navigate('Alerts')} />
                 </View>

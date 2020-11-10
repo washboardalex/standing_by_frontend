@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { renderIcon } from './coin-card.utils';
+import { View, Text, Image } from 'react-native';
+import { renderIcon } from './country-card.utils';
 import { 
     container,
     image,
@@ -13,34 +13,32 @@ import {
     seperator,
     percentChangePlus,
     percentChangeMinus
-} from './coin-card.styles';
+} from './country-card.styles';
 
 
-interface ICoinCardProps {
-    symbol: string,
-    priceUsd: number,
-    changePercent24Hr: number,
+interface ICountryCardProps {
     name: string,
-    volumeUsd24Hr: number
+    deathsToday: number,
+    confirmedToday: number,
 }
 
-const CoinCard : React.FC<ICoinCardProps> = ({ symbol, priceUsd, changePercent24Hr, name, volumeUsd24Hr }) => (
+const CountryCard : React.FC<ICountryCardProps> = ({ deathsToday, confirmedToday, name }) => (
     
     <View style={container}>
 
         <View style={upperRow}>
-            <Image
+            {/* <Image
                 style={image}
                 source={ renderIcon(symbol) }
-            />
-            <Text style={coinSymbol}>{ symbol }</Text>
+            /> */}
+            <Text style={coinSymbol}>{ deathsToday } deaths</Text>
             <Text style={seperator}>|</Text>
-            <Text style={coinName}>{ name }</Text>
-            <Text style={coinPrice}>{ priceUsd }
-            <Text style={moneySymbol}> $ </Text>
+            <Text style={coinName}>{ confirmedToday } new confirmed</Text>
+            <Text style={coinPrice}>{ name }
+                <Text style={moneySymbol}> $ </Text>
             </Text>
         </View>
-
+{/* 
         <View style={statisticsContainer}>
 
             <Text>
@@ -52,11 +50,11 @@ const CoinCard : React.FC<ICoinCardProps> = ({ symbol, priceUsd, changePercent24
                 <Text> { volumeUsd24Hr } </Text>
             </Text>
 
-        </View>
+        </View> */}
 
     </View> 
     
 
 );
 
-export default CoinCard;
+export default CountryCard;

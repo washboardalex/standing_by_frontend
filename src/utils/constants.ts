@@ -1,6 +1,6 @@
-export const coinApiUrl : string = 'https://api.coincap.io';
+export const covidApiUrl : string = 'https://corona-api.com';
 
-export const adminUrl : string = 'http://10.0.2.2:3001'
+export const adminUrl : string = 'http://localhost:3001';
 
 export const headers = { 
     'Content-Type': 'application/json',
