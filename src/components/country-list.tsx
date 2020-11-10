@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import { getCountryList } from '../redux/country-list/country-list.actions';
 import { AppState } from '../redux/root-reducer';
-import ICountry from '../models/apicorona/ICountry';
+import ICountrySummary from '../models/covidapi/ICountrySummarySummary';
 import CountryCard from './country-card/country-card.component';
 
 interface IDispatchProps {
@@ -24,15 +24,25 @@ class CountryList extends React.Component<CountryListProps> {
 
     render() {
         const { countryList } = this.props;
+        
+        console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");
+        console.log("BABABOI")
+        console.log(countryList.data)
+        console.log("BABABOI")
+        console.log("BABABOI")
+        console.log("BABABOI")
+        console.log("BABABOI")
+        console.log("BABABOI")
+        console.log("BABABOI")
 
-        return (
+        return  (
             <ScrollView>
-                {countryList.data.map(( country : ICountry, index : number ) => 
+                {countryList.data.map(( country : ICountrySummary, index : number ) => 
                     <CountryCard
                         key={index}    
-                        name={country.name}
-                        deathsToday={country.today.deaths ? country.today.deaths : 0}
-                        confirmedToday={country.today.confirmed ? country.today.confirmed : 0}
+                        name={country.country}
+                        newDeaths={country.newDeaths}
+                        newConfirmed={country.newConfirmed}
                     />
                 )}
             </ScrollView>

@@ -8,7 +8,7 @@ import { headers, adminUrl } from '../utils/constants';
 import { selectCountryListData } from '../redux/country-list/country-list.selectors';
 import { selectFirebaseToken } from '../redux/alerts/alerts.selectors';
 import { AppState } from '../redux/root-reducer';
-import ICountry from '../models/apicorona/ICountry';
+import ICountrySummary from '../models/covidapi/ICountrySummarySummary';
 import { IAlert, AlertCondition } from 'src/models/admin/IAlert';
 
 
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 });
 
 interface IReduxStateProps {
-    countryList: Array<ICountry>,
+    countryList: Array<ICountrySummary>,
     cloudMessageToken : string | null
 }
 
@@ -82,7 +82,7 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
                     selectedValue={this.state.selectedCoin}
                     onValueChange={(itemValue, itemIndex) => this.setState({selectedCoin: itemValue.toString()}) }
                 >
-                    {countryList.map((item: ICountry) => 
+                    {countryList.map((item: ICountrySummary) => 
                         <Picker.Item label={`${item.name} (${item.symbol})`} value={item.symbol} /> 
                     )}
                 </Picker>

@@ -16,13 +16,13 @@ import {
 } from './country-card.styles';
 
 
-interface ICountryCardProps {
+interface ICountrySummaryCardProps {
     name: string,
-    deathsToday: number,
-    confirmedToday: number,
+    newDeaths: number,
+    newConfirmed: number,
 }
 
-const CountryCard : React.FC<ICountryCardProps> = ({ deathsToday, confirmedToday, name }) => (
+const CountryCard : React.FC<ICountrySummaryCardProps> = ({ newDeaths, newConfirmed, name }) => (
     
     <View style={container}>
 
@@ -31,9 +31,9 @@ const CountryCard : React.FC<ICountryCardProps> = ({ deathsToday, confirmedToday
                 style={image}
                 source={ renderIcon(symbol) }
             /> */}
-            <Text style={coinSymbol}>{ deathsToday } deaths</Text>
+            <Text style={coinSymbol}>{ newDeaths } deaths</Text>
             <Text style={seperator}>|</Text>
-            <Text style={coinName}>{ confirmedToday } new confirmed</Text>
+            <Text style={coinName}>{ newConfirmed } new confirmed</Text>
             <Text style={coinPrice}>{ name }
                 <Text style={moneySymbol}> $ </Text>
             </Text>
