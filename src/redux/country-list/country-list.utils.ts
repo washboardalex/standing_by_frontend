@@ -16,10 +16,7 @@ export const formatCountries = (data : Array<any>) : Array<ICountrySummary> => {
 }
 
 export const sortCountriesByDailyConfirmed = (countries : Array<ICountrySummary>) : Array<ICountrySummary> => {
-    console.log(countries[0].newConfirmed)
     const newCountries = countries.sort(function(a, b) {
-        console.log(a)
-        console.log(b)
         return b.newConfirmed - a.newConfirmed;
     });
 

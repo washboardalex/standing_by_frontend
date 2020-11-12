@@ -12,12 +12,14 @@ import {
 export interface IAlertsState {
     fetching: boolean,
     firebaseCloudMessageToken: null | string,
+    fcmTokenAdminId: null | number
     error: any
 }
 
 const initState : IAlertsState = {
     fetching: true,
     firebaseCloudMessageToken: null,
+    fcmTokenAdminId: null,
     error: null
 }
 
@@ -53,6 +55,7 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
             return { 
                 ...state, 
                 fetching: false, 
+                fcmTokenAdminId: action.payload,
                 error: null 
             }
         
@@ -60,6 +63,7 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
             return { 
                 ...state, 
                 fetching: false, 
+                fcmTokenAdminID: null,
                 error: action.payload
             }
         default: 

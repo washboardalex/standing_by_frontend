@@ -6,10 +6,10 @@ import axios, { AxiosResponse, AxiosError } from 'axios';
 import { connect } from 'react-redux';
 import { headers, adminUrl } from '../utils/constants';
 import { selectCountryListData } from '../redux/country-list/country-list.selectors';
-import { selectFirebaseToken } from '../redux/alerts/alerts.selectors';
+import { selectFirebaseToken, selectFirebaseTokenId } from '../redux/alerts/alerts.selectors';
 import { AppState } from '../redux/root-reducer';
-import ICountrySummary from '../models/covidapi/ICountrySummarySummary';
-import { IAlert, AlertCondition } from 'src/models/admin/IAlert';
+import ICountrySummary from '../models/covidapi/ICountrySummary';
+import { IAlert, AlertCondition, TypeCondition } from 'src/models/admin/IAlert';
 
 
 
@@ -26,20 +26,23 @@ const styles = StyleSheet.create({
 
 interface IReduxStateProps {
     countryList: Array<ICountrySummary>,
-    cloudMessageToken : string | null
+    cloudMessageToken : string | null,
+    cmTokenId: number | null
 }
 
 interface ILocalState {
-    selectedCoin: string,
+    selectedCountry: string,
     condition: AlertCondition,
+    type: TypeCondition
     value: number
 }
 
 class Alerts extends React.Component<IReduxStateProps, ILocalState> { 
     
     state : ILocalState = {
-        selectedCoin: 'BTC',
+        selectedCountry: 'US',
         condition: 'greaterThan',
+        type: 'newConfirmed',
         value: 0
     }
 
@@ -47,14 +50,13 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
 
         console.log('yes this is happening');
 
-        const { selectedCoin, condition, value } = this.state;
+        const { selectedCountry, condition, value, type } = this.state;
 
         const newAlert : IAlert = {
             condition: condition,
             value: value,
-            type: 'price',
-            coin: selectedCoin,
-            
+            type: type,
+            country: selectedCountry
         }
 
         axios({
@@ -63,7 +65,8 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
             headers: headers,
             data: { 
                 newAlert,
-                token: this.props.cloudMessageToken
+                token: this.props.cloudMessageToken,
+                tokenId: this.props.cmTokenId
             }
         })
         .then((response : AxiosResponse) => console.log(response))
@@ -79,11 +82,11 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
             <View style={{flex: 1}}>
                 <Text>Alert me when the value of</Text>
                 <Picker
-                    selectedValue={this.state.selectedCoin}
-                    onValueChange={(itemValue, itemIndex) => this.setState({selectedCoin: itemValue.toString()}) }
+                    selectedValue={this.state.selectedCountry}
+                    onValueChange={(itemValue, itemIndex) => this.setState({selectedCountry: itemValue.toString()}) }
                 >
                     {countryList.map((item: ICountrySummary) => 
-                        <Picker.Item label={`${item.name} (${item.symbol})`} value={item.symbol} /> 
+                        <Picker.Item label={`${item.country} (${item.countryCode})`} value={item.countryCode} /> 
                     )}
                 </Picker>
                 <Text>is</Text>
@@ -117,7 +120,8 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
 
 const mapStateToProps = createStructuredSelector<AppState, IReduxStateProps>({
     countryList: selectCountryListData,
-    cloudMessageToken: selectFirebaseToken
+    cloudMessageToken: selectFirebaseToken,
+    cmTokenId: selectFirebaseTokenId
 });
 
 export default connect(mapStateToProps)(Alerts);

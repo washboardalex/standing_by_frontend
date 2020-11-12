@@ -16,6 +16,8 @@ import {
 
 export const getFirebaseToken = () => async (dispatch : Dispatch)  => {
 
+    console.log("entering getFirebaseToken function")
+
     dispatch({ type: SET_FIREBASE_PENDING });
     
     try {
@@ -30,6 +32,9 @@ export const getFirebaseToken = () => async (dispatch : Dispatch)  => {
         await messaging().requestPermission(); //I believe this is for ios only and thus not very important
         
         dispatch({ type: SET_FIREBASE_SUCCESS, payload: token });
+
+        console.log("already authorized, returning token")
+
         return token;
 
     } catch (error) {
@@ -38,7 +43,15 @@ export const getFirebaseToken = () => async (dispatch : Dispatch)  => {
     }
 }
 
+interface JsonResponse {
+    json: any
+}
+
+type AdminResponse = AxiosResponse & JsonResponse 
+
 export const sendFirebaseTokentoAdminServer = (token : string) => ( dispatch: Dispatch ) => {
+    console.log("sending firebase token to admin server");
+    console.log("tis is the endpoint, with a post request: ", `${adminUrl}/token`)
     dispatch({ type: SET_FIREBASE_ADMIN_PENDING });
     axios({
         method: 'post',
@@ -47,22 +60,12 @@ export const sendFirebaseTokentoAdminServer = (token : string) => ( dispatch: Di
         data: { token }
     })
     .then(function (response : AxiosResponse) {
-        dispatch({ type: SET_FIREBASE_ADMIN_SUCCESS });
-        console.log(response);
+        dispatch({ type: SET_FIREBASE_ADMIN_SUCCESS, payload: response.data.fcm_token_id });
     })
     .catch(function (error : AxiosError) {
+        console.log("got an error");
         dispatch({ type: SET_FIREBASE_ADMIN_FAILURE, payload: error });
         console.error(error);
     });
     
 }
-
-
-export const setNewAlert = () => {
-    console.log('awww sheeeeit setting a new alerrt');
-}
-
-export const cancelAlert = () => {
-    console.log('awww sheeeeit cancelling an alert');
-}
-

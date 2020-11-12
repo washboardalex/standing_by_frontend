@@ -24,16 +24,6 @@ class CountryList extends React.Component<CountryListProps> {
 
     render() {
         const { countryList } = this.props;
-        
-        console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");console.log("BABABOI");
-        console.log("BABABOI")
-        console.log(countryList.data)
-        console.log("BABABOI")
-        console.log("BABABOI")
-        console.log("BABABOI")
-        console.log("BABABOI")
-        console.log("BABABOI")
-        console.log("BABABOI")
 
         return  (
             <ScrollView>

@@ -9,3 +9,7 @@ export const selectFirebaseToken = createSelector(
     (alerts : IAlertsState) => alerts.firebaseCloudMessageToken
 );
 
+export const selectFirebaseTokenId = createSelector(
+    [selectAlerts],
+    (alerts : IAlertsState) => alerts.fcmTokenAdminId
+)
