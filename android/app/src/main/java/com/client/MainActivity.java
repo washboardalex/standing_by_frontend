@@ -1,4 +1,4 @@
-package com.client;
+package com.covid19alerts.client;
 
 import com.facebook.react.ReactActivity;
 
