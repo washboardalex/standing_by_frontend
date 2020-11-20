@@ -12,4 +12,9 @@ export const selectFirebaseToken = createSelector(
 export const selectFirebaseTokenId = createSelector(
     [selectAlerts],
     (alerts : IAlertsState) => alerts.fcmTokenAdminId
-)
+);
+
+export const selectDeviceId = createSelector(
+    [selectAlerts],
+    (alerts : IAlertsState) => alerts.deviceId
+);
