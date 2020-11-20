@@ -5,14 +5,15 @@ import { Dispatch, AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
 import { AppState } from '../redux/root-reducer';
-import { selectFirebaseToken } from '../redux/alerts/alerts.selectors';
+import { selectFirebaseToken, selectDeviceId } from '../redux/alerts/alerts.selectors';
 import { fArgReturn, fEmptyReturn } from '../utils/types';
 import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../redux/alerts/alerts.actions';
 
 import CountryList from '../components/country-list';
 
 interface IReduxStateProps {
-    firebaseCloudMessageToken: null | string
+    firebaseCloudMessageToken: null | string,
+    deviceId: string
 }
 
 interface IDispatchProps {
@@ -29,11 +30,11 @@ type HomeScreenProps = IReduxStateProps & IDispatchProps & IReactNavigationProps
 class HomeScreen extends React.Component<HomeScreenProps>{
     async componentDidMount() {
 
-        const { firebaseCloudMessageToken, getFirebaseToken, sendFirebaseTokentoAdminServer } = this.props;
+        const { firebaseCloudMessageToken, getFirebaseToken, deviceId, sendFirebaseTokentoAdminServer } = this.props;
 
         if (!firebaseCloudMessageToken) {
             const token = await getFirebaseToken();
-            if (token) sendFirebaseTokentoAdminServer(token);
+            if (token) sendFirebaseTokentoAdminServer(token, deviceId);
         }
     }
 
@@ -54,11 +55,12 @@ class HomeScreen extends React.Component<HomeScreenProps>{
 
 const mapStateToProps = createStructuredSelector<AppState, IReduxStateProps>({
     firebaseCloudMessageToken: selectFirebaseToken,
+    deviceId: selectDeviceId
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> | Dispatch<AnyAction>) => ({
     getFirebaseToken: () => dispatch<any>(getFirebaseToken()),
-    sendFirebaseTokentoAdminServer: (token : string) => dispatch<any>(sendFirebaseTokentoAdminServer(token))
+    sendFirebaseTokentoAdminServer: (token : string, deviceId: string) => dispatch<any>(sendFirebaseTokentoAdminServer(token, deviceId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

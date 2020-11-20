@@ -7,11 +7,13 @@ import {
     SET_FIREBASE_ADMIN_SUCCESS,
     SET_FIREBASE_ADMIN_FAILURE
 } from './alerts.constants';
+import { deviceId } from '../../utils/constants';
 
 
 export interface IAlertsState {
     fetching: boolean,
     firebaseCloudMessageToken: null | string,
+    deviceId: string,
     fcmTokenAdminId: null | number
     error: any
 }
@@ -19,6 +21,7 @@ export interface IAlertsState {
 const initState : IAlertsState = {
     fetching: true,
     firebaseCloudMessageToken: null,
+    deviceId: deviceId,
     fcmTokenAdminId: null,
     error: null
 }

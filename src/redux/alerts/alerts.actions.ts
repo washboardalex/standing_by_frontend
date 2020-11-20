@@ -13,7 +13,6 @@ import {
     SET_FIREBASE_ADMIN_SUCCESS
 } from './alerts.constants';
 
-
 export const getFirebaseToken = () => async (dispatch : Dispatch)  => {
 
     console.log("entering getFirebaseToken function")
@@ -49,7 +48,7 @@ interface JsonResponse {
 
 type AdminResponse = AxiosResponse & JsonResponse 
 
-export const sendFirebaseTokentoAdminServer = (token : string) => ( dispatch: Dispatch ) => {
+export const sendFirebaseTokentoAdminServer = (token : string, deviceId: string) => ( dispatch: Dispatch ) => {
     console.log("sending firebase token to admin server");
     console.log("tis is the endpoint, with a post request: ", `${adminUrl}/token`)
     dispatch({ type: SET_FIREBASE_ADMIN_PENDING });
@@ -57,7 +56,7 @@ export const sendFirebaseTokentoAdminServer = (token : string) => ( dispatch: Di
         method: 'post',
         url: `${adminUrl}/token`,
         headers: headers,
-        data: { token }
+        data: { token, deviceId }
     })
     .then(function (response : AxiosResponse) {
         dispatch({ type: SET_FIREBASE_ADMIN_SUCCESS, payload: response.data.fcm_token_id });
