@@ -9,7 +9,7 @@ import { selectCountryListData } from '../redux/country-list/country-list.select
 import { selectFirebaseToken, selectFirebaseTokenId } from '../redux/alerts/alerts.selectors';
 import { AppState } from '../redux/root-reducer';
 import ICountrySummary from '../models/covidapi/ICountrySummary';
-import { IAlert, AlertCondition, TypeCondition } from 'src/models/admin/IAlert';
+import { IAlert, AlertCondition, AlertType } from 'src/models/admin/IAlert';
 
 
 
@@ -33,7 +33,7 @@ interface IReduxStateProps {
 interface ILocalState {
     selectedCountry: string,
     condition: AlertCondition,
-    type: TypeCondition
+    type: AlertType
     value: number
 }
 
@@ -47,8 +47,6 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
     }
 
     createNewAlert = () => {
-
-        console.log('yes this is happening');
 
         const { selectedCountry, condition, value, type } = this.state;
 
@@ -80,7 +78,15 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
 
         return (
             <View style={{flex: 1}}>
-                <Text>Alert me when the value of</Text>
+                <Text>Alert me when</Text>
+                <Picker
+                    selectedValue={this.state.type}
+                    onValueChange={(itemValue : any, itemIndex) => this.setState({type: itemValue as AlertType}) }
+                >
+                    <Picker.Item label='new confirmed cases' value='newConfirmed' /> 
+                    <Picker.Item label='new confirmed deaths' value='newDeaths' />
+                </Picker>
+                <Text>in</Text>
                 <Picker
                     selectedValue={this.state.selectedCountry}
                     onValueChange={(itemValue, itemIndex) => this.setState({selectedCountry: itemValue.toString()}) }
@@ -89,13 +95,13 @@ class Alerts extends React.Component<IReduxStateProps, ILocalState> {
                         <Picker.Item label={`${item.country} (${item.countryCode})`} value={item.countryCode} /> 
                     )}
                 </Picker>
-                <Text>is</Text>
+                <Text>are</Text>
                 <Picker
                     selectedValue={this.state.condition}
                     onValueChange={(itemValue, itemIndex) => this.setState({condition: itemValue.toString() as AlertCondition})}
                 >
-                    <Picker.Item label='Greater than' value='greaterThan' /> 
-                    <Picker.Item label='Less than' value='lessThan' />
+                    <Picker.Item label='greater than' value='greaterThan' /> 
+                    <Picker.Item label='less than' value='lessThan' />
                 </Picker>
                 <TextInput  
                     onChangeText={text => this.setState({ value: Number(text) })}

@@ -42,12 +42,6 @@ export const getFirebaseToken = () => async (dispatch : Dispatch)  => {
     }
 }
 
-interface JsonResponse {
-    json: any
-}
-
-type AdminResponse = AxiosResponse & JsonResponse 
-
 export const sendFirebaseTokentoAdminServer = (token : string, deviceId: string) => ( dispatch: Dispatch ) => {
     console.log("sending firebase token to admin server");
     console.log("tis is the endpoint, with a post request: ", `${adminUrl}/token`)
