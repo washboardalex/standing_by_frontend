@@ -1,4 +1,4 @@
-import { getToken } from './alerts.utils';
+import { getToken } from './firebase.utils';
 import { headers } from '../../utils/constants';
 import { Dispatch } from 'redux';
 import axios, { AxiosResponse, AxiosError } from 'axios';
@@ -11,7 +11,7 @@ import {
     SET_FIREBASE_ADMIN_PENDING,
     SET_FIREBASE_ADMIN_FAILURE,
     SET_FIREBASE_ADMIN_SUCCESS
-} from './alerts.constants';
+} from './firebase.constants';
 
 export const getFirebaseToken = () => async (dispatch : Dispatch)  => {
 

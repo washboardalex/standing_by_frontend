@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { AppState } from '../root-reducer';
-import { IAlertsState } from './alerts.reducer';
+import { IAlertsState } from './firebase.reducer';
 
 const selectAlerts = (state : AppState) => state.alerts;
 

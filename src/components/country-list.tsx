@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Dispatch, AnyAction } from 'redux';
 import { connect } from 'react-redux';
-import { ScrollView } from 'react-native';
+import { FlatList, TextInput } from 'react-native';
 import { getCountryList } from '../redux/country-list/country-list.actions';
 import { AppState } from '../redux/root-reducer';
-import ICountrySummary from '../models/covidapi/ICountrySummarySummary';
+import { SearchableFlatList }from 'react-native-searchable-list';
+import ICountrySummary from '../models/covidapi/ICountrySummary';
 import CountryCard from './country-card/country-card.component';
 
 interface IDispatchProps {
@@ -12,31 +13,52 @@ interface IDispatchProps {
 }
 
 interface IStateProps {
-    countryList: any
+    countryList: any,
 }
 
-type CountryListProps = IDispatchProps &  IStateProps;
+interface ILocalState {
+    searchTerm: string
+}
+
+type CountryListProps = IDispatchProps &  IStateProps & ILocalState;
 
 class CountryList extends React.Component<CountryListProps> {
+
+    state : ILocalState = {
+        searchTerm: ''
+    }
+
     componentDidMount() {
         this.props.getCountryList();
     }
+
+    renderItem = ({ item } : any) => (
+        <CountryCard
+            name={item.country}
+            newDeaths={item.newDeaths}
+            newConfirmed={item.newConfirmed}
+        />
+    );
 
     render() {
         const { countryList } = this.props;
 
         return  (
-            <ScrollView>
-                {countryList.data.map(( country : ICountrySummary, index : number ) => 
-                    <CountryCard
-                        key={index}    
-                        name={country.country}
-                        newDeaths={country.newDeaths}
-                        newConfirmed={country.newConfirmed}
-                    />
-                )}
-            </ScrollView>
-        )
+            <>
+                <TextInput
+                    placeholder={'Filter List...'}
+                    onChangeText={searchTerm => this.setState({ searchTerm })} 
+                />
+                <SearchableFlatList
+                    data={countryList.data}
+                    searchTerm={this.state.searchTerm}
+                    searchAttribute={'country'}
+                    ignoreCase={true}
+                    renderItem={this.renderItem}
+                    keyExtractor={(item : ICountrySummary) => item.countryCode }
+                />
+            </>
+        );
     }
 }
 

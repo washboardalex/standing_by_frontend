@@ -5,9 +5,9 @@ import { Dispatch, AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
 import { AppState } from '../redux/root-reducer';
-import { selectFirebaseToken, selectDeviceId } from '../redux/alerts/alerts.selectors';
+import { selectFirebaseToken, selectDeviceId } from '../redux/firebase/firebase.selectors';
 import { fArgReturn, fEmptyReturn } from '../utils/types';
-import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../redux/alerts/alerts.actions';
+import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../redux/firebase/firebase.actions';
 
 import CountryList from '../components/country-list';
 

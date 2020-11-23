@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import countryListReducer from './country-list/country-list.reducer';
-import alertsReducer from './alerts/alerts.reducer';
+import alertsReducer from './firebase/firebase.reducer';
 
 
 const rootReducer = combineReducers({

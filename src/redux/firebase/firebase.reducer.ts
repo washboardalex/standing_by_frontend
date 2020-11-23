@@ -6,7 +6,7 @@ import {
     SET_FIREBASE_ADMIN_PENDING,
     SET_FIREBASE_ADMIN_SUCCESS,
     SET_FIREBASE_ADMIN_FAILURE
-} from './alerts.constants';
+} from './firebase.constants';
 import { deviceId } from '../../utils/constants';
 
 

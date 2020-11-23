@@ -38,23 +38,7 @@ const CountryCard : React.FC<ICountrySummaryCardProps> = ({ newDeaths, newConfir
                 <Text style={moneySymbol}> $ </Text>
             </Text>
         </View>
-{/* 
-        <View style={statisticsContainer}>
-
-            <Text>
-                24h:
-                <Text style={changePercent24Hr < 0 ? percentChangeMinus : percentChangePlus }> {changePercent24Hr} % </Text>
-            </Text>
-
-            <Text>24h Vol:
-                <Text> { volumeUsd24Hr } </Text>
-            </Text>
-
-        </View> */}
-
     </View> 
-    
-
 );
 
 export default CountryCard;

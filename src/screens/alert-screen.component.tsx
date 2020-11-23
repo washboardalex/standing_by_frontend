@@ -6,7 +6,7 @@ import axios, { AxiosResponse, AxiosError } from 'axios';
 import { connect } from 'react-redux';
 import { headers, adminUrl } from '../utils/constants';
 import { selectCountryListData } from '../redux/country-list/country-list.selectors';
-import { selectFirebaseToken, selectFirebaseTokenId } from '../redux/alerts/alerts.selectors';
+import { selectFirebaseToken, selectFirebaseTokenId } from '../redux/firebase/firebase.selectors';
 import { AppState } from '../redux/root-reducer';
 import ICountrySummary from '../models/covidapi/ICountrySummary';
 import { IAlert, AlertCondition, AlertType } from 'src/models/admin/IAlert';
