@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import AppWithRoutes from './src/routes/home-stack.route';
+import AppWithRoutes from './src/routes/drawer.route';
 
 
 import store from './src/redux/store'

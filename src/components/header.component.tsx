@@ -1,23 +1,30 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-        display: 'flex',
-        marginTop: 55,
-        alignItems: 'center'
+        width: '100%',
+        height: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     text: {
         fontWeight: 'bold',
-        fontSize: 20 
+        fontSize: 20,
+        letterSpacing: 1
     }
 });
 
 const { container, text } = styles;
 
+
+
 const Header : React.FC = () => (
     <View style={container}> 
-        <Text style={text}> Cryptocurrency App </Text>
+        <View>
+            <Text style={text}> Covid19 App </Text>
+        </View>
     </View>
 );
 

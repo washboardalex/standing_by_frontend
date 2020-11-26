@@ -1,4 +1,4 @@
-import countryList from "src/components/country-list";
+import countryList from "src/components/country-list.component";
 import ICountrySummary from "src/models/covidapi/ICountrySummary";
 
 export const formatCountries = (data : Array<any>) : Array<ICountrySummary> => {

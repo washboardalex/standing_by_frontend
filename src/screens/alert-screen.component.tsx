@@ -12,7 +12,6 @@ import ICountrySummary from '../models/covidapi/ICountrySummary';
 import { IAlert, AlertCondition, AlertType } from 'src/models/admin/IAlert';
 
 
-
 const styles = StyleSheet.create({  
     textInput: {  
         textAlign: 'center',  
@@ -37,7 +36,7 @@ interface ILocalState {
     value: number
 }
 
-class Alerts extends React.Component<IReduxStateProps, ILocalState> { 
+class AddAlert extends React.Component<IReduxStateProps, ILocalState> { 
     
     state : ILocalState = {
         selectedCountry: 'US',
@@ -130,4 +129,4 @@ const mapStateToProps = createStructuredSelector<AppState, IReduxStateProps>({
     cmTokenId: selectFirebaseTokenId
 });
 
-export default connect(mapStateToProps)(Alerts);
+export default connect(mapStateToProps)(AddAlert);
