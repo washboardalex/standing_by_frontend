@@ -1,20 +1,21 @@
 import { createSelector } from 'reselect';
 import { AppState } from '../root-reducer';
-import { IAlertsState } from './firebase.reducer';
+import { IFirebaseState } from './firebase.reducer';
 
-const selectAlerts = (state : AppState) => state.alerts;
+const selectFirebase = (state : AppState) => state.firebase;
 
 export const selectFirebaseToken = createSelector(
-    [selectAlerts],
-    (alerts : IAlertsState) => alerts.firebaseCloudMessageToken
+    [selectFirebase],
+    (firebase : IFirebaseState) => firebase.firebaseCloudMessageToken
 );
 
 export const selectFirebaseTokenId = createSelector(
-    [selectAlerts],
-    (alerts : IAlertsState) => alerts.fcmTokenAdminId
+    [selectFirebase],
+    (firebase : IFirebaseState) => firebase.fcmTokenAdminId
 );
 
 export const selectDeviceId = createSelector(
-    [selectAlerts],
-    (alerts : IAlertsState) => alerts.deviceId
+    [selectFirebase],
+    (firebase : IFirebaseState) => firebase.deviceId
 );
+

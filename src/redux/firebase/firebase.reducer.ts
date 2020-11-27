@@ -10,7 +10,7 @@ import {
 import { deviceId } from '../../utils/constants';
 
 
-export interface IAlertsState {
+export interface IFirebaseState {
     fetching: boolean,
     firebaseCloudMessageToken: null | string,
     deviceId: string,
@@ -18,7 +18,7 @@ export interface IAlertsState {
     error: any
 }
 
-const initState : IAlertsState = {
+const initState : IFirebaseState = {
     fetching: true,
     firebaseCloudMessageToken: null,
     deviceId: deviceId,
@@ -26,7 +26,7 @@ const initState : IAlertsState = {
     error: null
 }
 
-const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => {
+const firebaseReducer = (state : IFirebaseState = initState, action : AnyAction) => {
     switch(action.type) {
         case SET_FIREBASE_PENDING:
             return { 
@@ -74,6 +74,6 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
     }
 }
 
-export default alertsReducer;
+export default firebaseReducer;
 
 
