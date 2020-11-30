@@ -11,13 +11,13 @@ import {
 
 export interface IAlertsState {
     fetching: boolean,
-    alerts: Array<IAlert>,
+    alerts: null | Array<IAlert>,
     error: any
 }
 
 const initState : IAlertsState = {
     fetching: true,
-    alerts: [],
+    alerts: null,
     error: null
 }
 
@@ -52,7 +52,7 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
             
         case CREATE_ALERT_SUCCESS:
             
-            const alerts : Array<IAlert> = state.alerts;
+            const alerts : Array<IAlert> = state.alerts === null ? [] : state.alerts;
             alerts.push(action.payload);
 
             return { 

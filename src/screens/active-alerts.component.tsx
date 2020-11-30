@@ -13,7 +13,7 @@ import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../redux/fireb
 import { IAlert } from '../models/admin/IAlert';
 import { FlatList } from 'react-native-gesture-handler';
 import { selectCountries } from '../redux/country-list/country-list.selectors';
-import AlertSummary from '../components/alert-summary.component';
+import AlertSummary from '../components/alert-summary/alert-summary.component';
 import ICountrySummary from '../models/covidapi/ICountrySummary';
 import { getCountryList } from '../redux/country-list/country-list.actions';
 
@@ -21,7 +21,7 @@ interface IReduxStateProps {
     firebaseCloudMessageToken: null | string,
     fcmTokenAdminId: null | number,
     deviceId: string,
-    alerts: Array<IAlert>,
+    alerts: null | Array<IAlert>,
     countries: Array<ICountrySummary>
 }
 
@@ -67,7 +67,7 @@ class ActiveAlerts extends React.Component<ActiveAlertsProps> {
     async componentDidUpdate() {
         const { fcmTokenAdminId, getActiveAlerts, alerts } = this.props;
 
-        if (fcmTokenAdminId && !alerts.length) {
+        if (fcmTokenAdminId && !alerts) {
             await getActiveAlerts(fcmTokenAdminId);
         }
     }
@@ -86,7 +86,13 @@ class ActiveAlerts extends React.Component<ActiveAlertsProps> {
                 <FlatList
                     data={alerts}
                     renderItem={({item}) => (
-                        <AlertSummary />
+                        <AlertSummary 
+                            country={item.country}
+                            type={item.type}
+                            condition={item.condition}
+                            value={item.value}
+                            id={item.id}
+                        />
                     )}
                 />
             </View>
