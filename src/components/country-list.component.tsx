@@ -7,6 +7,7 @@ import { AppState } from '../redux/root-reducer';
 import { SearchableFlatList }from 'react-native-searchable-list';
 import ICountrySummary from '../models/covidapi/ICountrySummary';
 import CountryCard from './country-card/country-card.component';
+import countryListReducer from 'src/redux/country-list/country-list.reducer';
 
 interface IDispatchProps {
     getCountryList: () => any
@@ -29,7 +30,12 @@ class CountryList extends React.Component<CountryListProps> {
     }
 
     componentDidMount() {
-        this.props.getCountryList();
+        const { countryList } = this.props;
+
+        if (!countryList.length){
+            this.props.getCountryList();
+        }
+        
     }
 
     renderItem = ({ item } : any) => (
@@ -66,7 +72,7 @@ const mapStateToProps = (state : AppState) => ({ countryList: state.countryList 
 
 const mapDispatchToProps =  (dispatch: Dispatch<AnyAction>) => ({
     getCountryList: () => dispatch<any>(getCountryList())
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);
 

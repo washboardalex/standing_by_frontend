@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import AddAlert from '../../screens/alert-screen.component';
+import AddAlert from '../../screens/create-alert.component';
 import ActiveAlerts from '../../screens/active-alerts.component';
 import { navOptions } from '../constants.route';
 

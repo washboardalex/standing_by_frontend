@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import Countries from '../../screens/countries-screen.component';
-import AddAlert from '../../screens/alert-screen.component';
+import AddAlert from '../../screens/create-alert.component';
 import { navOptions } from '../constants.route';
 
 

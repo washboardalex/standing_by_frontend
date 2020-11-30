@@ -10,19 +10,26 @@ import { selectFirebaseToken, selectDeviceId, selectFirebaseTokenId } from '../r
 import { getActiveAlerts } from '../redux/alerts/alerts.actions';
 import { selectActiveAlerts } from '../redux/alerts/alerts.selectors';
 import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../redux/firebase/firebase.actions';
-import { IAlert } from 'src/models/admin/IAlert';
+import { IAlert } from '../models/admin/IAlert';
+import { FlatList } from 'react-native-gesture-handler';
+import { selectCountries } from '../redux/country-list/country-list.selectors';
+import AlertSummary from '../components/alert-summary.component';
+import ICountrySummary from '../models/covidapi/ICountrySummary';
+import { getCountryList } from '../redux/country-list/country-list.actions';
 
 interface IReduxStateProps {
     firebaseCloudMessageToken: null | string,
     fcmTokenAdminId: null | number,
     deviceId: string,
-    alerts: Array<IAlert>
+    alerts: Array<IAlert>,
+    countries: Array<ICountrySummary>
 }
 
 interface IDispatchProps {
     getFirebaseToken: fEmptyReturn,
     sendFirebaseTokentoAdminServer: fArgReturn,
-    getActiveAlerts: fArgReturn
+    getActiveAlerts: fArgReturn,
+    getCountryList: fArgReturn
 }
 
 type ActiveAlertsProps = IReduxStateProps & IDispatchProps;
@@ -33,38 +40,55 @@ class ActiveAlerts extends React.Component<ActiveAlertsProps> {
 
         const { 
             firebaseCloudMessageToken, 
-            getFirebaseToken, 
             deviceId, 
+            getFirebaseToken, 
             sendFirebaseTokentoAdminServer,
+            fcmTokenAdminId,
+            countries,
+            getCountryList
         } = this.props;
 
         if (!firebaseCloudMessageToken) {
             const token = await getFirebaseToken();
-            if (token) await sendFirebaseTokentoAdminServer(token, deviceId);
+            if (token) sendFirebaseTokentoAdminServer(token, deviceId);
         }
+
+        if (fcmTokenAdminId) 
+            await getActiveAlerts(fcmTokenAdminId);
+
+        console.log('countries are: ')
+        console.log(countries)
+        console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');
+
+        if (!countries.length) 
+            getCountryList();
     }
 
     async componentDidUpdate() {
-
         const { fcmTokenAdminId, getActiveAlerts, alerts } = this.props;
 
-        console.log('firebase admin id is: ');
-        console.log(fcmTokenAdminId);
-
-        if (fcmTokenAdminId) {
-            console.log('we got here')
+        if (fcmTokenAdminId && !alerts.length) {
             await getActiveAlerts(fcmTokenAdminId);
-            console.log('ok lets see if it worked:');
-            console.log(alerts);
         }
     }
 
     render() {
+
+        const { alerts } = this.props;
+
+        console.log('rendering')
+        console.log('alerts are : ')
+        console.log(alerts)
+        console.log('');console.log('');console.log('');console.log('');console.log('');
+
         return (
             <View>
-                <Text>
-                    Well here we are. The ActiveAlerts component.
-                </Text>
+                <FlatList
+                    data={alerts}
+                    renderItem={({item}) => (
+                        <AlertSummary />
+                    )}
+                />
             </View>
         );
     }
@@ -75,13 +99,15 @@ const mapStateToProps = createStructuredSelector<AppState, IReduxStateProps>({
     firebaseCloudMessageToken: selectFirebaseToken,
     fcmTokenAdminId: selectFirebaseTokenId,
     deviceId: selectDeviceId,
-    alerts: selectActiveAlerts
+    alerts: selectActiveAlerts,
+    countries: selectCountries
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> | Dispatch<AnyAction>) => ({
     getFirebaseToken: () => dispatch<any>(getFirebaseToken()),
     sendFirebaseTokentoAdminServer: (token : string, deviceId: string) => dispatch<any>(sendFirebaseTokentoAdminServer(token, deviceId)),
-    getActiveAlerts: (id: number) => dispatch<any>(getActiveAlerts(id))
+    getActiveAlerts: (id: number) => dispatch<any>(getActiveAlerts(id)),
+    getCountryList: () => dispatch<any>(getCountryList())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActiveAlerts);

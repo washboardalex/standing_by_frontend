@@ -1,15 +1,16 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, NativeTouchEvent, NativeSyntheticEvent } from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import { createStructuredSelector } from 'reselect';
-import axios, { AxiosResponse, AxiosError } from 'axios';
 import { connect } from 'react-redux';
-import { headers, adminUrl } from '../utils/constants';
-import { selectCountryListData } from '../redux/country-list/country-list.selectors';
+import { selectCountries } from '../redux/country-list/country-list.selectors';
 import { selectFirebaseToken, selectFirebaseTokenId } from '../redux/firebase/firebase.selectors';
 import { AppState } from '../redux/root-reducer';
 import ICountrySummary from '../models/covidapi/ICountrySummary';
-import { IAlert, AlertCondition, AlertType } from 'src/models/admin/IAlert';
+import { AlertCondition, AlertType } from 'src/models/admin/IAlert';
+import { AnyAction, Dispatch } from 'redux';
+import { createNewAlert } from '../redux/alerts/alerts.actions';
+import { fArgReturn } from '../utils/types';
 
 
 const styles = StyleSheet.create({  
@@ -26,8 +27,14 @@ const styles = StyleSheet.create({
 interface IReduxStateProps {
     countryList: Array<ICountrySummary>,
     cloudMessageToken : string | null,
-    cmTokenId: number | null
+    fcmTokenId: number | null
 }
+
+interface IDispatchProps {
+    createNewAlert: fArgReturn
+}
+
+type AddAlertProps = IReduxStateProps & IDispatchProps;
 
 interface ILocalState {
     selectedCountry: string,
@@ -36,7 +43,7 @@ interface ILocalState {
     value: number
 }
 
-class AddAlert extends React.Component<IReduxStateProps, ILocalState> { 
+class AddAlert extends React.Component<AddAlertProps, ILocalState> { 
     
     state : ILocalState = {
         selectedCountry: 'US',
@@ -44,36 +51,10 @@ class AddAlert extends React.Component<IReduxStateProps, ILocalState> {
         type: 'newConfirmed',
         value: 0
     }
-
-    createNewAlert = () => {
-
-        const { selectedCountry, condition, value, type } = this.state;
-
-        const newAlert : IAlert = {
-            condition: condition,
-            value: value,
-            type: type,
-            country: selectedCountry
-        }
-
-        axios({
-            method: 'post',
-            url: `${adminUrl}/alert`,
-            headers: headers,
-            data: { 
-                newAlert,
-                token: this.props.cloudMessageToken,
-                tokenId: this.props.cmTokenId
-            }
-        })
-        .then((response : AxiosResponse) => console.log(response))
-        .catch((error : AxiosError) => {
-            console.error(error);
-        });
-    }
     
     render() {
-        const { countryList } = this.props;
+        const { countryList, createNewAlert, cloudMessageToken, fcmTokenId } = this.props;
+        const { selectedCountry, condition, value, type } = this.state;
 
         return (
             <View style={{flex: 1}}>
@@ -110,7 +91,7 @@ class AddAlert extends React.Component<IReduxStateProps, ILocalState> {
                     keyboardType={'numeric'}
                 />  
                 <Button
-                    onPress={this.createNewAlert}
+                    onPress={(e : NativeSyntheticEvent<NativeTouchEvent>) => createNewAlert(selectedCountry, condition, value, type, cloudMessageToken, fcmTokenId)}
                     title="Create New Alert"
                     color="#841584"
                     accessibilityLabel="Create New Alert"
@@ -119,14 +100,17 @@ class AddAlert extends React.Component<IReduxStateProps, ILocalState> {
             
         );
     }
-
-    
 }
 
 const mapStateToProps = createStructuredSelector<AppState, IReduxStateProps>({
-    countryList: selectCountryListData,
+    countryList: selectCountries,
     cloudMessageToken: selectFirebaseToken,
-    cmTokenId: selectFirebaseTokenId
+    fcmTokenId: selectFirebaseTokenId
 });
 
-export default connect(mapStateToProps)(AddAlert);
+const mapDispatchToProps =  (dispatch: Dispatch<AnyAction>) => ({
+    createNewAlert: (country : string, condition : AlertCondition, value : number, type : AlertType, cloudMessageToken : null | string, fcmTokenId : null | number) => 
+            dispatch<any>(createNewAlert(country, condition, value, type, cloudMessageToken, fcmTokenId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddAlert);
