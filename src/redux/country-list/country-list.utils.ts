@@ -1,4 +1,3 @@
-import countryList from "src/components/country-list.component";
 import ICountrySummary from "src/models/covidapi/ICountrySummary";
 
 export const formatCountries = (data : Array<any>) : Array<ICountrySummary> => {
@@ -25,8 +24,6 @@ export const sortCountriesByDailyConfirmed = (countries : Array<ICountrySummary>
     let australia = newCountries.filter(function(country) {
         return country.countryCode === 'AU';
     })[0];
-
-    console.log('australia: ', australia);
 
     newCountries = newCountries.filter(function(country) {
         return country.countryCode !== 'AU';

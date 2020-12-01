@@ -61,7 +61,7 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
 
             return { 
                 ...state,
-                alerts: newAlerts, 
+                alerts: [ ...newAlerts ], 
                 fetching: false
             }
 
@@ -87,7 +87,7 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
 
             return { 
                 ...state,
-                alerts: deleteAlert,
+                alerts: [ ...deleteAlert ],
                 fetching: false
             }
 
