@@ -9,6 +9,7 @@ import { AppState } from '../../redux/root-reducer';
 import { fArgReturn } from '../../utils/types';
 import { IAlert, IAlert as IReceivedProps } from '../../models/admin/IAlert';
 import {genTypeText, genConditionText} from './alert-summary.utils';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface IReduxStateProps {
     fcmTokenAdminId: number | null
@@ -25,7 +26,8 @@ const AlertSummary : React.FC<AlertSummaryProps> = ({ country, type, condition, 
         <Text>
             {`You will be alerted when ${genTypeText(type)} are ${genConditionText(condition)} ${value} in ${country}.`}
         </Text>
-        <Button title='Delete' onPress={(e : NativeSyntheticEvent<NativeTouchEvent>) => deleteAlert(id, fcmTokenAdminId)}>Delete</Button>
+        <Button title='Delete' onPress={(e : NativeSyntheticEvent<NativeTouchEvent>) => deleteAlert(id, fcmTokenAdminId)}></Button>
+        <Icon name="trash-outline" size={30} color="#900" />
     </View>
 );
 
