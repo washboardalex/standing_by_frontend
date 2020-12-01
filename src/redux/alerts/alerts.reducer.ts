@@ -6,7 +6,11 @@ import {
     GET_ALERTS_SUCCESS,
     CREATE_ALERT_PENDING,
     CREATE_ALERT_FAILURE,
-    CREATE_ALERT_SUCCESS
+    CREATE_ALERT_SUCCESS,
+    DELETE_ALERT_PENDING,
+    DELETE_ALERT_SUCCESS,
+    DELETE_ALERT_FAILURE
+
 } from './alerts.constants';
 
 export interface IAlertsState {
@@ -52,16 +56,42 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
             
         case CREATE_ALERT_SUCCESS:
             
-            const alerts : Array<IAlert> = state.alerts === null ? [] : state.alerts;
-            alerts.push(action.payload);
+            let newAlerts : Array<IAlert> = state.alerts === null ? [] : state.alerts;
+            newAlerts.push(action.payload);
 
             return { 
                 ...state,
-                alerts: alerts, 
+                alerts: newAlerts, 
                 fetching: false
             }
 
         case CREATE_ALERT_FAILURE:
+            return { 
+                ...state, 
+                fetching: false, 
+                error: action.payload
+            }
+        //DELTE ALERT
+        case DELETE_ALERT_PENDING:
+            return { 
+                ...state, 
+                fetching: true 
+            }
+            
+        case DELETE_ALERT_SUCCESS:
+
+            let deleteAlert = state.alerts;
+            deleteAlert = deleteAlert!.filter((alert : IAlert) => {
+                return alert.id !== action.payload
+            });
+
+            return { 
+                ...state,
+                alerts: deleteAlert,
+                fetching: false
+            }
+
+        case DELETE_ALERT_FAILURE:
             return { 
                 ...state, 
                 fetching: false, 

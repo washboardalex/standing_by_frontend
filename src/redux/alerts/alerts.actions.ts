@@ -85,6 +85,11 @@ export const deleteAlert = (alertId : number, fcmTokAdminId : number) => async (
         }
     })
     .then(function (response : AxiosResponse) {
+
+        console.log('lets see the response:');
+        console.log(response.data);
+        console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');
+        
         dispatch({ type: DELETE_ALERT_SUCCESS, payload: response.data });
     })
     .catch(function (error : AxiosError) {
