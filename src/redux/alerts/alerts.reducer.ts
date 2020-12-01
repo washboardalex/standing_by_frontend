@@ -1,5 +1,5 @@
 import { AnyAction } from "redux"
-import { IAlert } from "src/models/admin/IAlert"
+import { IAlert } from "../../models/admin/IAlert"
 import {
     GET_ALERTS_PENDING,
     GET_ALERTS_FAILURE,

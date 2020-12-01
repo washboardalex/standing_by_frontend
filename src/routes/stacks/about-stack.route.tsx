@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { navOptions } from '../options.route';
+import { navOptions } from './config/options.route';
 import AboutApp from '../../screens/about.component';
 
 const Stack = createStackNavigator();

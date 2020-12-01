@@ -1,7 +1,7 @@
 import { AppState } from '../root-reducer';
 import { createSelector } from 'reselect';
 import { ICountrySummaryListState } from './country-list.reducer';
-import ICountrySummary from 'src/models/covidapi/ICountrySummary';
+import ICountrySummary from '../../models/covidapi/ICountrySummary';
 
 const selectCountryListState = (state : AppState) => state.countryList;
 

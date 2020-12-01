@@ -34,7 +34,7 @@ const mapStateToProps = createStructuredSelector<AppState, IReduxStateProps>({
 });
 
 const mapDispatchToProps =  (dispatch: Dispatch<AnyAction>) => ({
-    deleteAlert: (alertId : IAlert, fcmTokAdminId : number) => dispatch<any>(deleteAlert(alertId, fcmTokAdminId))
+    deleteAlert: (alertId : number, fcmTokAdminId : number) => dispatch<any>(deleteAlert(alertId, fcmTokAdminId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlertSummary);

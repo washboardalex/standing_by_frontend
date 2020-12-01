@@ -13,7 +13,7 @@ import {
     DELETE_ALERT_FAILURE,
     DELETE_ALERT_SUCCESS
 } from './alerts.constants';
-import { AlertCondition, AlertType, IAlert } from 'src/models/admin/IAlert';
+import { AlertCondition, AlertType, IAlert } from '../../models/admin/IAlert';
 
 export const getActiveAlerts = (fcmTokAdminId : number) => async (dispatch : Dispatch)  => {
 

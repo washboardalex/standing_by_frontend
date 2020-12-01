@@ -1,4 +1,4 @@
-import Header from '../components/header.component';
+import Header from '../../../components/header.component';
 import React from 'react';
 import {Button} from 'react-native';
 

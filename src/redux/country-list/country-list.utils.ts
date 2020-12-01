@@ -1,4 +1,4 @@
-import ICountrySummary from "src/models/covidapi/ICountrySummary";
+import ICountrySummary from "../../models/covidapi/ICountrySummary";
 
 export const formatCountries = (data : Array<any>) : Array<ICountrySummary> => {
     return data.map((item: any) : ICountrySummary => ({

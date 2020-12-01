@@ -7,7 +7,7 @@ import { selectCountries } from '../redux/country-list/country-list.selectors';
 import { selectFirebaseToken, selectFirebaseTokenId } from '../redux/firebase/firebase.selectors';
 import { AppState } from '../redux/root-reducer';
 import ICountrySummary from '../models/covidapi/ICountrySummary';
-import { AlertCondition, AlertType } from 'src/models/admin/IAlert';
+import { AlertCondition, AlertType } from '../models/admin/IAlert';
 import { AnyAction, Dispatch } from 'redux';
 import { createNewAlert } from '../redux/alerts/alerts.actions';
 import { fArgReturn } from '../utils/types';
