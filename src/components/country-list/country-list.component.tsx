@@ -7,7 +7,7 @@ import { AppState } from '../../redux/root-reducer';
 import { SearchableFlatList } from 'react-native-searchable-list';
 import ICountrySummary from '../../models/covidapi/ICountrySummary';
 import CountryCard from '../country-card/country-card.component';
-import styles from './country-list.styles';
+import  { searchBox, searchBoxWrap }  from './country-list.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { appTextColour } from '../../utils/styles';
 
@@ -51,7 +51,6 @@ class CountryList extends React.Component<CountryListProps> {
 
     render() {
         const { countryList } = this.props;
-        const { searchBox, searchBoxWrap } = styles;
 
         return  (
             <>

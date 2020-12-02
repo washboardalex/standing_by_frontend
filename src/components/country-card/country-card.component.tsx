@@ -2,17 +2,17 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { renderIcon } from './country-card.utils';
 import { 
+    border,
     container,
     image,
-    moneySymbol,
-    upperRow,
-    coinSymbol,
-    coinName,
-    coinPrice,
-    statisticsContainer,
-    seperator,
-    percentChangePlus,
-    percentChangeMinus
+    imageColumn,
+    textColumn,
+    headingWrap,
+    heading,
+    dataWrap,
+    dataColumn,
+    dataHeadingText,
+    dataText
 } from './country-card.styles';
 
 
@@ -23,23 +23,35 @@ interface ICountrySummaryCardProps {
     slug: string
 }
 
-const CountryCard : React.FC<ICountrySummaryCardProps> = ({ newDeaths, newConfirmed, name }) => (
-    
-    <View style={container}>
+const CountryCard : React.FC<ICountrySummaryCardProps> = ({ newDeaths, newConfirmed, name, slug }) => (
+    <View style={border}>
+        <View style={container}>
 
-        <View style={upperRow}>
-            {/* <Image
-                style={image}
-                source={ renderIcon(symbol) }
-            /> */}
-            <Text style={coinSymbol}>{ newDeaths } deaths</Text>
-            <Text style={seperator}>|</Text>
-            <Text style={coinName}>{ newConfirmed } new confirmed</Text>
-            <Text style={coinPrice}>{ name }
-                <Text style={moneySymbol}> $ </Text>
-            </Text>
-        </View>
-    </View> 
+            <View style={imageColumn}>
+                <Image
+                    style={image}
+                    source={ renderIcon(slug) }
+                />
+            </View>
+            <View style={textColumn}>
+                <View style={headingWrap}>
+                    <Text style={heading}>
+                        {name}
+                    </Text>
+                </View>
+                <View style={dataWrap}>
+                    <View style={dataColumn}>
+                            <Text style={dataHeadingText}>New Cases</Text>
+                            <Text style={dataText}>{ newConfirmed }</Text>
+                    </View>
+                    <View style={dataColumn}>
+                        <Text style={dataHeadingText}>New Deaths</Text>
+                        <Text style={dataText}>{ newDeaths }</Text>
+                    </View>
+                </View>
+            </View>
+        </View> 
+    </View>
 );
 
 export default CountryCard;

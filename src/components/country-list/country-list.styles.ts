@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { appTextColour } from '../../utils/styles';
+import { appTextColour,  appBorderStyle, appBorderWidth, appBorderRadius } from '../../utils/styles';
 
 const styles = StyleSheet.create({
     searchBox: {
@@ -10,9 +10,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         justifyContent: 'space-between', 
         margin: 5, 
-        borderRadius: 4, 
-        borderStyle: 'dashed', 
-        borderWidth: 2, 
+        borderRadius: appBorderRadius, 
+        borderStyle: appBorderStyle, 
+        borderWidth: appBorderWidth, 
         borderColor: appTextColour, 
         alignItems: 'center', 
         paddingRight: 5, 
@@ -20,5 +20,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default styles;
+export const { searchBox, searchBoxWrap } = styles;
 
