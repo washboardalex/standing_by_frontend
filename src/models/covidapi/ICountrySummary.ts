@@ -1,5 +1,4 @@
 import ICoordinate from './ICoordinate';
-import IAggregateData from './IAggregateData';
 
 interface ICountrySummary {
     country: string,

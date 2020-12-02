@@ -1,13 +1,15 @@
 import { AlertCondition, AlertType } from "../../models/admin/IAlert";
 
-
-export const genTypeText = (type : AlertType) : string => 
-        type === 'newDeaths' 
+export const generateAlertMessage = (type : AlertType, condition : AlertCondition, value : number) => {
+    const typeText = type === 'newDeaths' 
             ? 'new deaths' 
             : 'new confirmed cases';
 
-export const genConditionText = (condition : AlertCondition) : string => 
-        condition === 'greaterThan' 
-            ? 'greater than' 
+    const conditionText = condition === 'greaterThan' 
+            ? 'more than' 
             : 'less than';
+
+    return `When ${typeText} are ${conditionText} ${value}.`
+}
+
 

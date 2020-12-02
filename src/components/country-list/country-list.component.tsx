@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react';
 import { Dispatch, AnyAction } from 'redux';
 import { connect } from 'react-redux';
-import { FlatList, TextInput } from 'react-native';
-import { getCountryList } from '../redux/country-list/country-list.actions';
-import { AppState } from '../redux/root-reducer';
-import { SearchableFlatList }from 'react-native-searchable-list';
-import ICountrySummary from '../models/covidapi/ICountrySummary';
-import CountryCard from './country-card/country-card.component';
-import countryListReducer from 'src/redux/country-list/country-list.reducer';
+import { FlatList, TextInput, View } from 'react-native';
+import { getCountryList } from '../../redux/country-list/country-list.actions';
+import { AppState } from '../../redux/root-reducer';
+import { SearchableFlatList } from 'react-native-searchable-list';
+import ICountrySummary from '../../models/covidapi/ICountrySummary';
+import CountryCard from '../country-card/country-card.component';
+import styles from './country-list.styles';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { appTextColour } from '../../utils/styles';
 
 interface IDispatchProps {
     getCountryList: () => any
@@ -43,18 +45,25 @@ class CountryList extends React.Component<CountryListProps> {
             name={item.country}
             newDeaths={item.newDeaths}
             newConfirmed={item.newConfirmed}
+            slug={item.slug}
         />
     );
 
     render() {
         const { countryList } = this.props;
+        const { searchBox, searchBoxWrap } = styles;
 
         return  (
             <>
-                <TextInput
-                    placeholder={'Filter List...'}
-                    onChangeText={searchTerm => this.setState({ searchTerm })} 
-                />
+                <View style={searchBoxWrap}>
+                    <TextInput
+                        style={searchBox}
+                        placeholder={'Filter by country...'}
+                        onChangeText={searchTerm => this.setState({ searchTerm })} 
+                        placeholderTextColor={appTextColour}
+                    />
+                    <Icon name='search-outline' color={appTextColour} size={32} />
+                </View>
                 <SearchableFlatList
                     data={countryList.data}
                     searchTerm={this.state.searchTerm}

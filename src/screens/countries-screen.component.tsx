@@ -1,14 +1,11 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
+import { appBackgroundColour } from '../utils/styles';
 
-import CountryList from '../components/country-list.component';
+import CountryList from '../components/country-list/country-list.component';
 
-interface IReactNavigationProps {
-    navigation: any
-}
-
-const Countries : React.FC<IReactNavigationProps> = ({navigation}) => (
-    <View style={{ flex: 1 }}>
+const Countries : React.FC = () => (
+    <View style={{ flex: 1, backgroundColor: appBackgroundColour }}>
         <CountryList />
     </View>
 );

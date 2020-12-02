@@ -20,6 +20,7 @@ interface ICountrySummaryCardProps {
     name: string,
     newDeaths: number,
     newConfirmed: number,
+    slug: string
 }
 
 const CountryCard : React.FC<ICountrySummaryCardProps> = ({ newDeaths, newConfirmed, name }) => (

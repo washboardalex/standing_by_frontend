@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Button, Text } from 'react-native';
 
-import CountryList from '../components/country-list.component';
+import CountryList from '../components/country-list/country-list.component';
 
 interface IReactNavigationProps {
     navigation: any

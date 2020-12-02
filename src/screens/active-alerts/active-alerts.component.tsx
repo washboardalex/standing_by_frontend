@@ -1,21 +1,25 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, NavigatorIOS } from 'react-native';
 import { connect } from 'react-redux';
-import { fArgReturn, fEmptyReturn } from '../utils/types';
+import { fArgReturn, fEmptyReturn } from '../../utils/types';
 import { createStructuredSelector } from 'reselect';
 import { Dispatch, AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { AppState } from '../redux/root-reducer';
-import { selectFirebaseToken, selectDeviceId, selectFirebaseTokenId } from '../redux/firebase/firebase.selectors';
-import { getActiveAlerts } from '../redux/alerts/alerts.actions';
-import { selectActiveAlerts } from '../redux/alerts/alerts.selectors';
-import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../redux/firebase/firebase.actions';
-import { IAlert } from '../models/admin/IAlert';
+import { AppState } from '../../redux/root-reducer';
+import { selectFirebaseToken, selectDeviceId, selectFirebaseTokenId } from '../../redux/firebase/firebase.selectors';
+import { getActiveAlerts } from '../../redux/alerts/alerts.actions';
+import { selectActiveAlerts } from '../../redux/alerts/alerts.selectors';
+import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../../redux/firebase/firebase.actions';
+import { IAlert } from '../../models/admin/IAlert';
 import { FlatList } from 'react-native-gesture-handler';
-import { selectCountries } from '../redux/country-list/country-list.selectors';
-import AlertSummary from '../components/alert-summary/alert-summary.component';
-import ICountrySummary from '../models/covidapi/ICountrySummary';
-import { getCountryList } from '../redux/country-list/country-list.actions';
+import { selectCountries } from '../../redux/country-list/country-list.selectors';
+import AlertSummary from '../../components/alert-summary/alert-summary.component';
+import ICountrySummary from '../../models/covidapi/ICountrySummary';
+import { getCountryList } from '../../redux/country-list/country-list.actions';
+import styles from './active-alerts.styles';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { appTextColour } from '../../utils/styles';
+import { NavigationActions } from 'react-navigation';
 
 interface IReduxStateProps {
     firebaseCloudMessageToken: null | string,
@@ -32,7 +36,11 @@ interface IDispatchProps {
     getCountryList: fArgReturn
 }
 
-type ActiveAlertsProps = IReduxStateProps & IDispatchProps;
+interface IReactNavigatorProps {
+    navigation: any
+}
+
+type ActiveAlertsProps = IReduxStateProps & IDispatchProps & IReactNavigatorProps;
 
 class ActiveAlerts extends React.Component<ActiveAlertsProps> {
 
@@ -74,27 +82,31 @@ class ActiveAlerts extends React.Component<ActiveAlertsProps> {
 
     render() {
 
-        const { alerts } = this.props;
-
-        console.log('rendering')
-        console.log('alerts are : ')
-        console.log(alerts)
-        console.log('');console.log('');console.log('');console.log('');console.log('');
+        const { alerts, navigation } = this.props;
+        const { container, noAlerts, text } = styles;
 
         return (
-            <View>
-                <FlatList
-                    data={alerts}
-                    renderItem={({item}) => (
-                        <AlertSummary 
-                            country={item.country}
-                            type={item.type}
-                            condition={item.condition}
-                            value={item.value}
-                            id={item.id}
+            <View style={container}>
+                {alerts && alerts.length
+                    ?
+                        <FlatList
+                            data={alerts}
+                            renderItem={({item}) => (
+                                <AlertSummary 
+                                    country={item.country}
+                                    type={item.type}
+                                    condition={item.condition}
+                                    value={item.value}
+                                    id={item.id}
+                                />
+                            )}
                         />
-                    )}
-                />
+                    :
+                        <View style={noAlerts}>
+                            <Text style={text}>Add an Alert</Text>
+                            <Icon name="add-circle-outline" size={64} color={appTextColour} onPress={() => navigation.navigate('Add Alert')} />
+                        </View>
+                }
             </View>
         );
     }
