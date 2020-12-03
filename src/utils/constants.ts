@@ -8,3 +8,4 @@ export const headers : AppHeaders = {
     'Accept-Encoding': 'gzip',
 };
 export const deviceId : string = getUniqueId();
+export const developerEmail : string = 'devemail@gmail.com';

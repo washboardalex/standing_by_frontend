@@ -2,503 +2,503 @@ export const renderIcon = (slug : string) => {
 
     switch (slug.toLowerCase()) {
         case 'lithuania':
-            return require(`../assets/lithuania.png`);
+            return require(`../assets/countries/lithuania.png`);
         case 'palau':
-            return require(`../assets/palau.png`);
+            return require(`../assets/countries/palau.png`);
         case 'puerto-rico':
-            return require(`../assets/puerto-rico.png`);
+            return require(`../assets/countries/puerto-rico.png`);
         case 'réunion':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'austria':
-            return require(`../assets/austria.png`);
+            return require(`../assets/countries/austria.png`);
         case 'cuba':
-            return require(`../assets/cuba.png`);
+            return require(`../assets/countries/cuba.png`);
         case 'guernsey':
-            return require(`../assets/guernsey.png`);
+            return require(`../assets/countries/guernsey.png`);
         case 'israel':
-            return require(`../assets/israel.png`);
+            return require(`../assets/countries/israel.png`);
         case 'moldova':
-            return require(`../assets/moldova.png`);
+            return require(`../assets/countries/moldova.png`);
         case 'niger':
-            return require(`../assets/niger.png`);
+            return require(`../assets/countries/niger.png`);
         case 'latvia':
-            return require(`../assets/latvia.png`);
+            return require(`../assets/countries/latvia.png`);
         case 'mauritius':
-            return require(`../assets/mauritius.png`);
+            return require(`../assets/countries/mauritius.png`);
         case 'wallis-and-futuna-islands':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'botswana':
-            return require(`../assets/botswana.png`);
+            return require(`../assets/countries/botswana.png`);
         case 'gabon':
-            return require(`../assets/gabon.png`);
+            return require(`../assets/countries/gabon.png`);
         case 'ghana':
-            return require(`../assets/ghana.png`);
+            return require(`../assets/countries/ghana.png`);
         case 'switzerland':
-            return require(`../assets/switzerland.png`);
+            return require(`../assets/countries/switzerland.png`);
         case 'syria':
-            return require(`../assets/syria.png`);
+            return require(`../assets/countries/syria.png`);
         case 'togo':
-            return require(`../assets/togo.png`);
+            return require(`../assets/countries/togo.png`);
         case 'nicaragua':
-            return require(`../assets/nicaragua.png`);
+            return require(`../assets/countries/nicaragua.png`);
         case 'taiwan':
-            return require(`../assets/taiwan.png`);
+            return require(`../assets/countries/taiwan.png`);
         case 'uzbekistan':
-            return require(`../assets/uzbekistan.png`);
+            return require(`../assets/countries/uzbekistan.png`);
         case 'afghanistan':
-            return require(`../assets/afghanistan.png`);
+            return require(`../assets/countries/afghanistan.png`);
         case 'djibouti':
-            return require(`../assets/djibouti.png`);
+            return require(`../assets/countries/djibouti.png`);
         case 'greenland':
-            return require(`../assets/greenland.png`);
+            return require(`../assets/countries/greenland.png`);
         case 'cote-divoire':
-            return require(`../assets/ivory-coast.png`);
+            return require(`../assets/countries/ivory-coast.png`);
         case 'guinea-bissau':
-            return require(`../assets/guinea-bissau.png`);
+            return require(`../assets/countries/guinea-bissau.png`);
         case 'hungary':
-            return require(`../assets/hungary.png`);
+            return require(`../assets/countries/hungary.png`);
         case 'korea-south':
-            return require(`../assets/korea-south.png`);
+            return require(`../assets/countries/korea-south.png`);
         case 'rwanda':
-            return require(`../assets/rwanda.png`);
+            return require(`../assets/countries/rwanda.png`);
         case 'antigua-and-barbuda':
-            return require(`../assets/antigua-and-barbuda.png`);
+            return require(`../assets/countries/antigua-and-barbuda.png`);
         case 'british-indian-ocean-territory':
-            return require(`../assets/british-indian-ocean-territory.png`);
+            return require(`../assets/countries/british-indian-ocean-territory.png`);
         case 'cameroon':
-            return require(`../assets/cameroon.png`);
+            return require(`../assets/countries/cameroon.png`);
         case 'slovenia':
-            return require(`../assets/slovenia.png`);
+            return require(`../assets/countries/slovenia.png`);
         case 'equatorial-guinea':
-            return require(`../assets/equatorial-guinea.png`);
+            return require(`../assets/countries/equatorial-guinea.png`);
         case 'madagascar':
-            return require(`../assets/madagascar.png`);
+            return require(`../assets/countries/madagascar.png`);
         case 'tanzania':
-            return require(`../assets/tanzania.png`);
+            return require(`../assets/countries/tanzania.png`);
         case 'timor-leste':
-            return require(`../assets/timor-leste.png`);
+            return require(`../assets/countries/timor-leste.png`);
         case 'heard-and-mcdonald-islands':
-            return require(`../assets/australia.png`);
+            return require(`../assets/countries/australia.png`);
         case 'marshall-islands':
-            return require(`../assets/marshall-islands.png`);
+            return require(`../assets/countries/marshall-islands.png`);
         case 'saint-kitts-and-nevis':
-            return require(`../assets/saint-kitts-and-nevis.png`);
+            return require(`../assets/countries/saint-kitts-and-nevis.png`);
         case 'swaziland':
-            return require(`../assets/swaziland.png`);
+            return require(`../assets/countries/swaziland.png`);
         case 'tajikistan':
-            return require(`../assets/tajikistan.png`);
+            return require(`../assets/countries/tajikistan.png`);
         case 'burkina-faso':
-            return require(`../assets/burkina-faso.png`);
+            return require(`../assets/countries/burkina-faso.png`);
         case 'saint-martin-french-part':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'serbia':
-            return require(`../assets/serbia.png`);
+            return require(`../assets/countries/serbia.png`);
         case 'sudan':
-            return require(`../assets/sudan.png`);
+            return require(`../assets/countries/sudan.png`);
         case 'united-arab-emirates':
-            return require(`../assets/united-arab-emirates.png`);
+            return require(`../assets/countries/united-arab-emirates.png`);
         case 'venezuela':
-            return require(`../assets/venezuela.png`);
+            return require(`../assets/countries/venezuela.png`);
         case 'vietnam':
-            return require(`../assets/vietnam.png`);
+            return require(`../assets/countries/vietnam.png`);
         case 'eritrea':
-            return require(`../assets/eritrea.png`);
+            return require(`../assets/countries/eritrea.png`);
         case 'guinea':
-            return require(`../assets/guinea.png`);
+            return require(`../assets/countries/guinea.png`);
         case 'macedonia':
-            return require(`../assets/macedonia.png`);
+            return require(`../assets/countries/macedonia.png`);
         case 'montserrat':
-            return require(`../assets/montserrat.png`);
+            return require(`../assets/countries/montserrat.png`);
         case 'portugal':
-            return require(`../assets/portugal.png`);
+            return require(`../assets/countries/portugal.png`);
         case 'saint-lucia':
-            return require(`../assets/saint-lucia.png`);
+            return require(`../assets/countries/saint-lucia.png`);
         case 'tokelau':
-            return require(`../assets/tokelau.png`);
+            return require(`../assets/countries/tokelau.png`);
         case 'ireland':
-            return require(`../assets/ireland.png`);
+            return require(`../assets/countries/ireland.png`);
         case 'nigeria':
-            return require(`../assets/nigeria.png`);
+            return require(`../assets/countries/nigeria.png`);
         case 'ecuador':
-            return require(`../assets/ecuador.png`);
+            return require(`../assets/countries/ecuador.png`);
         case 'guyana':
-            return require(`../assets/guyana.png`);
+            return require(`../assets/countries/guyana.png`);
         case 'turkmenistan':
-            return require(`../assets/turkmenistan.png`);
+            return require(`../assets/countries/turkmenistan.png`);
         case 'lesotho':
-            return require(`../assets/lesotho.png`);
+            return require(`../assets/countries/lesotho.png`);
         case 'papua-new-guinea':
-            return require(`../assets/papua-new-guinea.png`);
+            return require(`../assets/countries/papua-new-guinea.png`);
         case 'ethiopia':
-            return require(`../assets/ethiopia.png`);
+            return require(`../assets/countries/ethiopia.png`);
         case 'haiti':
-            return require(`../assets/haiti.png`);
+            return require(`../assets/countries/haiti.png`);
         case 'lebanon':
-            return require(`../assets/lebanon.png`);
+            return require(`../assets/countries/lebanon.png`);
         case 'senegal':
-            return require(`../assets/senegal.png`);
+            return require(`../assets/countries/senegal.png`);
         case 'south-georgia-and-the-south-sandwich-islands':
-            return require(`../assets/united-kingdom.png`);
+            return require(`../assets/countries/united-kingdom.png`);
         case 'tonga':
-            return require(`../assets/tonga.png`);
+            return require(`../assets/countries/tonga.png`);
         case 'cyprus':
-            return require(`../assets/cyprus.png`);
+            return require(`../assets/countries/cyprus.png`);
         case 'dominica':
-            return require(`../assets/dominica.png`);
+            return require(`../assets/countries/dominica.png`);
         case 'liberia':
-            return require(`../assets/liberia.png`);
+            return require(`../assets/countries/liberia.png`);
         case 'yemen':
-            return require(`../assets/yemen.png`);
+            return require(`../assets/countries/yemen.png`);
         case 'kenya':
-            return require(`../assets/kenya.png`);
+            return require(`../assets/countries/kenya.png`);
         case 'argentina':
-            return require(`../assets/argentina.png`);
+            return require(`../assets/countries/argentina.png`);
         case 'kiribati':
-            return require(`../assets/kiribati.png`);
+            return require(`../assets/countries/kiribati.png`);
         case 'lao-pdr':
-            return require(`../assets/lao-pdr.png`);
+            return require(`../assets/countries/lao-pdr.png`);
         case 'libya':
-            return require(`../assets/libya.png`);
+            return require(`../assets/countries/libya.png`);
         case 'saudi-arabia':
-            return require(`../assets/saudi-arabia.png`);
+            return require(`../assets/countries/saudi-arabia.png`);
         case 'australia':
-            return require(`../assets/australia.png`);
+            return require(`../assets/countries/australia.png`);
         case 'burundi':
-            return require(`../assets/burundi.png`);
+            return require(`../assets/countries/burundi.png`);
         case 'cocos-keeling-islands':
-            return require(`../assets/australia.png`);
+            return require(`../assets/countries/australia.png`);
         case 'saint-helena':
-            return require(`../assets/united-kingdom.png`);
+            return require(`../assets/countries/united-kingdom.png`);
         case 'western-sahara':
-            return require(`../assets/western-sahara.png`);
+            return require(`../assets/countries/western-sahara.png`);
         case 'greece':
-            return require(`../assets/greece.png`);
+            return require(`../assets/countries/greece.png`);
         case 'malta':
-            return require(`../assets/malta.png`);
+            return require(`../assets/countries/malta.png`);
         case 'turkey':
-            return require(`../assets/turkey.png`);
+            return require(`../assets/countries/turkey.png`);
         case 'trinidad-and-tobago':
-            return require(`../assets/trinidad-and-tobago.png`);
+            return require(`../assets/countries/trinidad-and-tobago.png`);
         case 'new-zealand':
-            return require(`../assets/new-zealand.png`);
+            return require(`../assets/countries/new-zealand.png`);
         case 'sao-tome-and-principe':
-            return require(`../assets/sao-tome-and-principe.png`);
+            return require(`../assets/countries/sao-tome-and-principe.png`);
         case 'slovakia':
-            return require(`../assets/slovakia.png`);
+            return require(`../assets/countries/slovakia.png`);
         case 'zambia':
-            return require(`../assets/zambia.png`);
+            return require(`../assets/countries/zambia.png`);
         case 'bouvet-island':
-            return require(`../assets/norway.png`);
+            return require(`../assets/countries/norway.png`);
         case 'france':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'monaco':
-            return require(`../assets/monaco.png`);
+            return require(`../assets/countries/monaco.png`);
         case 'namibia':
-            return require(`../assets/namibia.png`);
+            return require(`../assets/countries/namibia.png`);
         case 'norway':
-            return require(`../assets/norway.png`);
+            return require(`../assets/countries/norway.png`);
         case 'tuvalu':
-            return require(`../assets/tuvalu.png`);
+            return require(`../assets/countries/tuvalu.png`);
         case 'azerbaijan':
-            return require(`../assets/azerbaijan.png`);
+            return require(`../assets/countries/azerbaijan.png`);
         case 'cayman-islands':
-            return require(`../assets/cayman-islands.png`);
+            return require(`../assets/countries/cayman-islands.png`);
         case 'congo-brazzaville':
-            return require(`../assets/congo-brazzaville.png`);
+            return require(`../assets/countries/congo-brazzaville.png`);
         case 'french-polynesia':
-            return require(`../assets/french-polynesia.png`);
+            return require(`../assets/countries/french-polynesia.png`);
         case 'maldives':
-            return require(`../assets/maldives.png`);
+            return require(`../assets/countries/maldives.png`);
         case 'nauru':
-            return require(`../assets/nauru.png`);
+            return require(`../assets/countries/nauru.png`);
         case 'sweden':
-            return require(`../assets/sweden.png`);
+            return require(`../assets/countries/sweden.png`);
         case 'dominican-republic':
-            return require(`../assets/dominican-republic.png`);
+            return require(`../assets/countries/dominican-republic.png`);
         case 'guadeloupe':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'mozambique':
-            return require(`../assets/mozambique.png`);
+            return require(`../assets/countries/mozambique.png`);
         case 'chile':
-            return require(`../assets/chile.png`);
+            return require(`../assets/countries/chile.png`);
         case 'faroe-islands':
-            return require(`../assets/faroe-islands.png`);
+            return require(`../assets/countries/faroe-islands.png`);
         case 'montenegro':
-            return require(`../assets/montenegro.png`);
+            return require(`../assets/countries/montenegro.png`);
         case 'bahamas':
-            return require(`../assets/bahamas.png`);
+            return require(`../assets/countries/bahamas.png`);
         case 'cape-verde':
-            return require(`../assets/cape-verde.png`);
+            return require(`../assets/countries/cape-verde.png`);
         case 'georgia':
-            return require(`../assets/georgia.png`);
+            return require(`../assets/countries/georgia.png`);
         case 'saint-pierre-and-miquelon':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'italy':
-            return require(`../assets/italy.png`);
+            return require(`../assets/countries/italy.png`);
         case 'micronesia':
-            return require(`../assets/micronesia.png`);
+            return require(`../assets/countries/micronesia.png`);
         case 'bosnia-and-herzegovina':
-            return require(`../assets/bosnia-and-herzegovina.png`);
+            return require(`../assets/countries/bosnia-and-herzegovina.png`);
         case 'brunei':
-            return require(`../assets/brunei.png`);
+            return require(`../assets/countries/brunei.png`);
         case 'canada':
-            return require(`../assets/canada.png`);
+            return require(`../assets/countries/canada.png`);
         case 'myanmar':
-            return require(`../assets/myanmar.png`);
+            return require(`../assets/countries/myanmar.png`);
         case 'somalia':
-            return require(`../assets/somalia.png`);
+            return require(`../assets/countries/somalia.png`);
         case 'belgium':
-            return require(`../assets/belgium.png`);
+            return require(`../assets/countries/belgium.png`);
         case 'el-salvador':
-            return require(`../assets/el-salvador.png`);
+            return require(`../assets/countries/el-salvador.png`);
         case 'isle-of-man':
-            return require(`../assets/isle-of-man.png`);
+            return require(`../assets/countries/isle-of-man.png`);
         case 'jamaica':
-            return require(`../assets/jamaica.png`);
+            return require(`../assets/countries/jamaica.png`);
         case 'mayotte':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'northern-mariana-islands':
-            return require(`../assets/united-states.png`);
+            return require(`../assets/countries/united-states.png`);
         case 'sri-lanka':
-            return require(`../assets/sri-lanka.png`);
+            return require(`../assets/countries/sri-lanka.png`);
         case 'tunisia':
-            return require(`../assets/tunisia.png`);
+            return require(`../assets/countries/tunisia.png`);
         case 'jersey':
-            return require(`../assets/jersey.png`);
+            return require(`../assets/countries/jersey.png`);
         case 'chad':
-            return require(`../assets/chad.png`);
+            return require(`../assets/countries/chad.png`);
         case 'angola':
-            return require(`../assets/angola.png`);
+            return require(`../assets/countries/angola.png`);
         case 'kuwait':
-            return require(`../assets/kuwait.png`);
+            return require(`../assets/countries/kuwait.png`);
         case 'singapore':
-            return require(`../assets/singapore.png`);
+            return require(`../assets/countries/singapore.png`);
         case 'south-africa':
-            return require(`../assets/south-africa.png`);
+            return require(`../assets/countries/south-africa.png`);
         case 'spain':
-            return require(`../assets/spain.png`);
+            return require(`../assets/countries/spain.png`);
         case 'algeria':
-            return require(`../assets/algeria.png`);
+            return require(`../assets/countries/algeria.png`);
         case 'iran':
-            return require(`../assets/iran.png`);
+            return require(`../assets/countries/iran.png`);
         case 'jordan':
-            return require(`../assets/jordan.png`);
+            return require(`../assets/countries/jordan.png`);
         case 'philippines':
-            return require(`../assets/philippines.png`);
+            return require(`../assets/countries/philippines.png`);
         case 'saint-vincent-and-the-grenadines':
-            return require(`../assets/saint-vincent-and-the-grenadines.png`);
+            return require(`../assets/countries/saint-vincent-and-the-grenadines.png`);
         case 'svalbard-and-jan-mayen-islands':
-            return require(`../assets/norway.png`);
+            return require(`../assets/countries/norway.png`);
         case 'bahrain':
-            return require(`../assets/bahrain.png`);
+            return require(`../assets/countries/bahrain.png`);
         case 'egypt':
-            return require(`../assets/egypt.png`);
+            return require(`../assets/countries/egypt.png`);
         case 'gibraltar':
-            return require(`../assets/gibraltar.png`);
+            return require(`../assets/countries/gibraltar.png`);
         case 'netherlands-antilles':
-            return require(`../assets/netherlands.png`);
+            return require(`../assets/countries/netherlands.png`);
         case 'ukraine':
-            return require(`../assets/ukraine.png`);
+            return require(`../assets/countries/ukraine.png`);
         case 'armenia':
-            return require(`../assets/armenia.png`);
+            return require(`../assets/countries/armenia.png`);
         case 'congo-kinshasa':
-            return require(`../assets/congo-kinshasa.png`);
+            return require(`../assets/countries/congo-kinshasa.png`);
         case 'denmark':
-            return require(`../assets/denmark.png`);
+            return require(`../assets/countries/denmark.png`);
         case 'india':
-            return require(`../assets/india.png`);
+            return require(`../assets/countries/india.png`);
         case 'niue':
-            return require(`../assets/niue.png`);
+            return require(`../assets/countries/niue.png`);
         case 'uruguay':
-            return require(`../assets/uruguay.png`);
+            return require(`../assets/countries/uruguay.png`);
         case 'andorra':
-            return require(`../assets/andorra.png`);
+            return require(`../assets/countries/andorra.png`);
         case 'belize':
-            return require(`../assets/belize.png`);
+            return require(`../assets/countries/belize.png`);
         case 'liechtenstein':
-            return require(`../assets/liechtenstein.png`);
+            return require(`../assets/countries/liechtenstein.png`);
         case 'pitcairn':
-            return require(`../assets/united-kingdom.png`);
+            return require(`../assets/countries/united-kingdom.png`);
         case 'antarctica':
-            return require(`../assets/antarctica.png`);
+            return require(`../assets/countries/antarctica.png`);
         case 'benin':
-            return require(`../assets/benin.png`);
+            return require(`../assets/countries/benin.png`);
         case 'french-guiana':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'kazakhstan':
-            return require(`../assets/kazakhstan.png`);
+            return require(`../assets/countries/kazakhstan.png`);
         case 'bermuda':
-            return require(`../assets/bermuda.png`);
+            return require(`../assets/countries/bermuda.png`);
         case 'falkland-islands-malvinas':
-            return require(`../assets/united-kingdom.png`);
+            return require(`../assets/countries/united-kingdom.png`);
         case 'hong-kong-sar-china':
-            return require(`../assets/hong-kong-sar-china.png`);
+            return require(`../assets/countries/hong-kong-sar-china.png`);
         case 'poland':
-            return require(`../assets/poland.png`);
+            return require(`../assets/countries/poland.png`);
         case 'united-kingdom':
-            return require(`../assets/united-kingdom.png`);
+            return require(`../assets/countries/united-kingdom.png`);
         case 'us-minor-outlying-islands':
-            return require(`../assets/united-states.png`);
+            return require(`../assets/countries/united-states.png`);
         case 'bolivia':
-            return require(`../assets/bolivia.png`);
+            return require(`../assets/countries/bolivia.png`);
         case 'luxembourg':
-            return require(`../assets/luxembourg.png`);
+            return require(`../assets/countries/luxembourg.png`);
         case 'mali':
-            return require(`../assets/mali.png`);
+            return require(`../assets/countries/mali.png`);
         case 'pakistan':
-            return require(`../assets/pakistan.png`);
+            return require(`../assets/countries/pakistan.png`);
         case 'american-samoa':
-            return require(`../assets/american-samoa.png`);
+            return require(`../assets/countries/american-samoa.png`);
         case 'estonia':
-            return require(`../assets/estonia.png`);
+            return require(`../assets/countries/estonia.png`);
         case 'finland':
-            return require(`../assets/finland.png`);
+            return require(`../assets/countries/finland.png`);
         case 'mongolia':
-            return require(`../assets/mongolia.png`);
+            return require(`../assets/countries/mongolia.png`);
         case 'panama':
-            return require(`../assets/panama.png`);
+            return require(`../assets/countries/panama.png`);
         case 'romania':
-            return require(`../assets/romania.png`);
+            return require(`../assets/countries/romania.png`);
         case 'sierra-leone':
-            return require(`../assets/sierra-leone.png`);
+            return require(`../assets/countries/sierra-leone.png`);
         case 'solomon-islands':
-            return require(`../assets/solomon-islands.png`);
+            return require(`../assets/countries/solomon-islands.png`);
         case 'kosovo':
-            return require(`../assets/kosovo.png`);
+            return require(`../assets/countries/kosovo.png`);
         case 'french-southern-territories':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'korea-north':
-            return require(`../assets/korea-north.png`);
+            return require(`../assets/countries/korea-north.png`);
         case 'christmas-island':
-            return require(`../assets/christmas-island.png`);
+            return require(`../assets/countries/christmas-island.png`);
         case 'colombia':
-            return require(`../assets/colombia.png`);
+            return require(`../assets/countries/colombia.png`);
         case 'holy-see-vatican-city-state':
-            return require(`../assets/holy-see-vatican-city-state.png`);
+            return require(`../assets/countries/holy-see-vatican-city-state.png`);
         case 'japan':
-            return require(`../assets/japan.png`);
+            return require(`../assets/countries/japan.png`);
         case 'oman':
-            return require(`../assets/oman.png`);
+            return require(`../assets/countries/oman.png`);
         case 'paraguay':
-            return require(`../assets/paraguay.png`);
+            return require(`../assets/countries/paraguay.png`);
         case 'cambodia':
-            return require(`../assets/cambodia.png`);
+            return require(`../assets/countries/cambodia.png`);
         case 'central-african-republic':
-            return require(`../assets/central-african-republic.png`);
+            return require(`../assets/countries/central-african-republic.png`);
         case 'croatia':
-            return require(`../assets/croatia.png`);
+            return require(`../assets/countries/croatia.png`);
         case 'russia':
-            return require(`../assets/russia.png`);
+            return require(`../assets/countries/russia.png`);
         case 'south-sudan':
-            return require(`../assets/south-sudan.png`);
+            return require(`../assets/countries/south-sudan.png`);
         case 'bangladesh':
-            return require(`../assets/bangladesh.png`);
+            return require(`../assets/countries/bangladesh.png`);
         case 'barbados':
-            return require(`../assets/barbados.png`);
+            return require(`../assets/countries/barbados.png`);
         case 'morocco':
-            return require(`../assets/morocco.png`);
+            return require(`../assets/countries/morocco.png`);
         case 'new-caledonia':
-            return require(`../assets/france.png`);
+            return require(`../assets/countries/france.png`);
         case 'zimbabwe':
-            return require(`../assets/zimbabwe.png`);
+            return require(`../assets/countries/zimbabwe.png`);
         case 'bhutan':
-            return require(`../assets/bhutan.png`);
+            return require(`../assets/countries/bhutan.png`);
         case 'macao-sar-china':
-            return require(`../assets/macao-sar-china.png`);
+            return require(`../assets/countries/macao-sar-china.png`);
         case 'united-states':
-            return require(`../assets/united-states.png`);
+            return require(`../assets/countries/united-states.png`);
         case 'aruba':
-            return require(`../assets/aruba.png`);
+            return require(`../assets/countries/aruba.png`);
         case 'czech-republic':
-            return require(`../assets/czech-republic.png`);
+            return require(`../assets/countries/czech-republic.png`);
         case 'comoros':
-            return require(`../assets/comoros.png`);
+            return require(`../assets/countries/comoros.png`);
         case 'guatemala':
-            return require(`../assets/guatemala.png`);
+            return require(`../assets/countries/guatemala.png`);
         case 'norfolk-island':
-            return require(`../assets/norfolk-island.png`);
+            return require(`../assets/countries/norfolk-island.png`);
         case 'saint-barthélemy':
-            return require(`../assets/st-barts.png`);
+            return require(`../assets/countries/st-barts.png`);
         case 'belarus':
-            return require(`../assets/belarus.png`);
+            return require(`../assets/countries/belarus.png`);
         case 'virgin-islands':
-            return require(`../assets/virgin-islands.png`);
+            return require(`../assets/countries/virgin-islands.png`);
         case 'germany':
-            return require(`../assets/germany.png`);
+            return require(`../assets/countries/germany.png`);
         case 'honduras':
-            return require(`../assets/honduras.png`);
+            return require(`../assets/countries/honduras.png`);
         case 'iceland':
-            return require(`../assets/iceland.png`);
+            return require(`../assets/countries/iceland.png`);
         case 'indonesia':
-            return require(`../assets/indonesia.png`);
+            return require(`../assets/countries/indonesia.png`);
         case 'nepal':
-            return require(`../assets/nepal.png`);
+            return require(`../assets/countries/nepal.png`);
         case 'peru':
-            return require(`../assets/peru.png`);
+            return require(`../assets/countries/peru.png`);
         case 'samoa':
-            return require(`../assets/samoa.png`);
+            return require(`../assets/countries/samoa.png`);
         case 'thailand':
-            return require(`../assets/thailand.png`);
+            return require(`../assets/countries/thailand.png`);
         case 'brazil':
-            return require(`../assets/brazil.png`);
+            return require(`../assets/countries/brazil.png`);
         case 'british-virgin-islands':
-            return require(`../assets/british-virgin-islands.png`);
+            return require(`../assets/countries/british-virgin-islands.png`);
         case 'iraq':
-            return require(`../assets/iraq.png`);
+            return require(`../assets/countries/iraq.png`);
         case 'malawi':
-            return require(`../assets/malawi.png`);
+            return require(`../assets/countries/malawi.png`);
         case 'anguilla':
-            return require(`../assets/anguilla.png`);
+            return require(`../assets/countries/anguilla.png`);
         case 'bulgaria':
-            return require(`../assets/bulgaria.png`);
+            return require(`../assets/countries/bulgaria.png`);
         case 'china':
-            return require(`../assets/china.png`);
+            return require(`../assets/countries/china.png`);
         case 'costa-rica':
-            return require(`../assets/costa-rica.png`);
+            return require(`../assets/countries/costa-rica.png`);
         case 'grenada':
-            return require(`../assets/grenada.png`);
+            return require(`../assets/countries/grenada.png`);
         case 'guam':
-            return require(`../assets/guam.png`);
+            return require(`../assets/countries/guam.png`);
         case 'kyrgyzstan':
-            return require(`../assets/kyrgyzstan.png`);
+            return require(`../assets/countries/kyrgyzstan.png`);
         case 'martinique':
-            return require(`../assets/martinique.png`);
+            return require(`../assets/countries/martinique.png`);
         case 'mauritania':
-            return require(`../assets/mauritania.png`);
+            return require(`../assets/countries/mauritania.png`);
         case 'qatar':
-            return require(`../assets/qatar.png`);
+            return require(`../assets/countries/qatar.png`);
         case 'mexico':
-            return require(`../assets/mexico.png`);
+            return require(`../assets/countries/mexico.png`);
         case 'san-marino':
-            return require(`../assets/san-marino.png`);
+            return require(`../assets/countries/san-marino.png`);
         case 'suriname':
-            return require(`../assets/suriname.png`);
+            return require(`../assets/countries/suriname.png`);
         case 'albania':
-            return require(`../assets/albania.png`);
+            return require(`../assets/countries/albania.png`);
         case 'gambia':
-            return require(`../assets/gambia.png`);
+            return require(`../assets/countries/gambia.png`);
         case 'netherlands':
-            return require(`../assets/netherlands.png`);
+            return require(`../assets/countries/netherlands.png`);
         case 'palestine':
-            return require(`../assets/palestine.png`);
+            return require(`../assets/countries/palestine.png`);
         case 'uganda':
-            return require(`../assets/uganda.png`);
+            return require(`../assets/countries/uganda.png`);
         case 'malaysia':
-            return require(`../assets/malaysia.png`);
+            return require(`../assets/countries/malaysia.png`);
         case 'vanuatu':
-            return require(`../assets/vanuatu.png`);
+            return require(`../assets/countries/vanuatu.png`);
         case 'ala-aland-islands':
-            return require(`../assets/finland.png`);
+            return require(`../assets/countries/finland.png`);
         case 'cook-islands':
-            return require(`../assets/cook-islands.png`);
+            return require(`../assets/countries/cook-islands.png`);
         case 'fiji':
-            return require(`../assets/fiji.png`);
+            return require(`../assets/countries/fiji.png`);
         case 'seychelles':
-            return require(`../assets/seychelles.png`);
+            return require(`../assets/countries/seychelles.png`);
         case 'turks-and-caicos-islands':
-            return require(`../assets/united-kingdom.png`);
+            return require(`../assets/countries/united-kingdom.png`);
         default:
-            return require(`../assets/question.png`);
+            return require(`../assets/countries/question.png`);
     }   
 }
 

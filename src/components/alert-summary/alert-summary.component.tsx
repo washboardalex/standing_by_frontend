@@ -98,15 +98,9 @@ class AlertSummary extends React.Component<AlertSummaryProps> {
             type, 
             condition, 
             value, 
-            deleteAlert, 
             id, 
-            fcmTokenAdminId, 
             countrySlug, 
-            alertPendingDelete 
         } = this.props;
-
-        console.log('id: ')
-        console.log(id)
         
         return (
             <View style={border}>
