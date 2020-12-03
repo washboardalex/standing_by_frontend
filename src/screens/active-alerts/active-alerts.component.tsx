@@ -98,13 +98,14 @@ class ActiveAlerts extends React.Component<ActiveAlertsProps> {
                                     condition={item.condition}
                                     value={item.value}
                                     id={item.id}
+                                    countrySlug={item.countrySlug}
                                 />
                             )}
                         />
                     :
                         <View style={noAlerts}>
                             <Text style={text}>Add an Alert</Text>
-                            <Icon name="add-circle-outline" size={64} color={appTextColour} onPress={() => navigation.navigate('add')} />
+                            <Icon name='add-circle-outline' size={64} color={appTextColour} onPress={() => navigation.navigate('add')} />
                         </View>
                 }
             </View>

@@ -1,5 +1,5 @@
 import { headers } from '../../utils/constants';
-import { Dispatch } from 'redux';
+import { AnyAction, Dispatch } from 'redux';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { adminUrl } from '../../utils/constants';
 import {
@@ -11,14 +11,14 @@ import {
     CREATE_ALERT_SUCCESS,
     DELETE_ALERT_PENDING,
     DELETE_ALERT_FAILURE,
-    DELETE_ALERT_SUCCESS
+    DELETE_ALERT_SUCCESS,
+    RESET_CREATE_ALERT_FLOW,
+    RESET_DELETE_ALERT_FLOW
 } from './alerts.constants';
 import { AlertCondition, AlertType, IAlert } from '../../models/admin/IAlert';
+import { AlertFlow } from './alerts.reducer';
 
 export const getActiveAlerts = (fcmTokAdminId : number) => async (dispatch : Dispatch)  => {
-
-    console.log("get dat id son!");
-    console.log(fcmTokAdminId);
 
     dispatch({ type: GET_ALERTS_PENDING });
     axios({
@@ -30,18 +30,18 @@ export const getActiveAlerts = (fcmTokAdminId : number) => async (dispatch : Dis
         dispatch({ type: GET_ALERTS_SUCCESS, payload: response.data });
     })
     .catch(function (error : AxiosError) {
-        console.log("got an error");
         dispatch({ type: GET_ALERTS_FAILURE, payload: error });
         console.error(error);
     });
 }
 
 export const createNewAlert = (country : string, condition : AlertCondition, value : number, 
-            type : AlertType, cloudMessageToken : string | null, fcmTokenId : number | null) => async (dispatch : Dispatch) => {
+            type : AlertType, cloudMessageToken : string | null, fcmTokenId : number | null, countrySlug : string) => async (dispatch : Dispatch) => {
 
     const newAlert : IAlert = {
         condition,
         value,
+        countrySlug,
         type,
         country
     }
@@ -59,9 +59,6 @@ export const createNewAlert = (country : string, condition : AlertCondition, val
         }
     })
     .then((response : AxiosResponse) => {
-        console.log('ok lets see whats going on here')
-        console.log(response.data);
-        console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');
         dispatch({ type: CREATE_ALERT_SUCCESS, payload: response.data });
     })
     .catch((error : AxiosError) => {
@@ -71,10 +68,8 @@ export const createNewAlert = (country : string, condition : AlertCondition, val
 }
 
 export const deleteAlert = (alertId : number, fcmTokAdminId : number) => async (dispatch : Dispatch) => {
-    console.log("get dat id son!");
-    console.log(fcmTokAdminId, alertId);
 
-    dispatch({ type: DELETE_ALERT_PENDING });
+    dispatch({ type: DELETE_ALERT_PENDING, payload: alertId });
     axios({
         method: 'post',
         url: `${adminUrl}/alert/delete`,
@@ -85,17 +80,22 @@ export const deleteAlert = (alertId : number, fcmTokAdminId : number) => async (
         }
     })
     .then(function (response : AxiosResponse) {
-
-        console.log('lets see the response:');
-        console.log(response.data);
-        console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');
-        
         dispatch({ type: DELETE_ALERT_SUCCESS, payload: response.data });
     })
     .catch(function (error : AxiosError) {
-        console.log("got an error");
         dispatch({ type: DELETE_ALERT_FAILURE, payload: error });
         console.error(error);
     });
 }
+
+export const resetCreateAlertFlow = () : AnyAction => ({
+    type: RESET_CREATE_ALERT_FLOW,
+    payload: 'pre' as AlertFlow
+}); 
+
+export const resetDeleteAlertFlow = () : AnyAction => ({
+    type: RESET_DELETE_ALERT_FLOW,
+    payload: 'pre' as AlertFlow
+}); 
+
 

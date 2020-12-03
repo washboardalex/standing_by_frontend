@@ -3,7 +3,7 @@ import React from "react";
 import { View, TouchableOpacity } from 'react-native';
 import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { appBackgroundColour, appBorderWidth, appTextColour } from '../../utils/styles';
+import { appTextColour } from '../../utils/styles';
 import { container, icon } from './custom-tab-bar.styles';
 
 const CustomTabBar : React.FC<MaterialTopTabBarProps> = ({ state, descriptors, navigation, position }) => {

@@ -2,18 +2,24 @@ import { createSelector } from 'reselect';
 import { AppState } from '../root-reducer';
 import { IAlertsState } from './alerts.reducer';
 
-const selectAlerts = (state : AppState) => {
-    console.log('appstate')
-    console.log(state)
-    return state.alerts;
-}
+const selectAlerts = (state : AppState) => state.alerts;
 
 export const selectActiveAlerts = createSelector(
     [selectAlerts],
-    (alerts : IAlertsState) => {
-        console.log('heres the state: ', alerts);
-        console.log(alerts.alerts);
-        return alerts.alerts
-    }
+    (alerts : IAlertsState) =>  alerts.alerts
 );
 
+export const selectNewAlertFlow = createSelector(
+    [selectAlerts],
+    (alerts : IAlertsState) =>  alerts.newAlertFlow
+);
+
+export const selectDeleteAlertFlow = createSelector(
+    [selectAlerts],
+    (alerts : IAlertsState) => alerts.deleteAlertFlow
+);
+
+export const selectAlertPendingDelete = createSelector(
+    [selectAlerts],
+    (alerts : IAlertsState) => alerts.alertPendingDelete
+);

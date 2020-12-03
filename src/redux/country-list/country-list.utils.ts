@@ -34,5 +34,23 @@ export const sortCountriesByDailyConfirmed = (countries : Array<ICountrySummary>
     return newCountries;
 }
 
+export const sortCountriesAlphabetical = (countries : Array<ICountrySummary>) : Array<ICountrySummary> => {
+    let newCountries = countries.sort(function(a, b) {
+        if(a.country < b.country) { return -1; }
+        if(a.country > b.country) { return 1; }
+        return 0;
+    });
 
+    let australia = newCountries.filter(function(country) {
+        return country.countryCode === 'AU';
+    })[0];
+
+    newCountries = newCountries.filter(function(country) {
+        return country.countryCode !== 'AU';
+    });
+
+    newCountries.unshift(australia);
+
+    return newCountries;
+}
 

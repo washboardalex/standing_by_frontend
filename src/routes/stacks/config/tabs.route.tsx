@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { createMaterialTopTabNavigator, MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
 import Countries from '../../../screens/countries-screen.component';
-import AddAlert from '../../../screens/create-alert.component';
+import AddAlert from '../../../screens/create-alert/create-alert.component';
 import ActiveAlerts from '../../../screens/active-alerts/active-alerts.component';
 import MyTabBar from '../../../components/custom-tab-bar/custom-tab-bar.component';
 

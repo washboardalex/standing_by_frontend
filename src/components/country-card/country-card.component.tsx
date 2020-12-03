@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { renderIcon } from './country-card.utils';
+import { renderIcon } from '../../utils/functions';
 import { 
     border,
     container,

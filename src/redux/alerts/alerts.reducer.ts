@@ -9,19 +9,29 @@ import {
     CREATE_ALERT_SUCCESS,
     DELETE_ALERT_PENDING,
     DELETE_ALERT_SUCCESS,
-    DELETE_ALERT_FAILURE
+    DELETE_ALERT_FAILURE,
+    RESET_CREATE_ALERT_FLOW,
+    RESET_DELETE_ALERT_FLOW
 
 } from './alerts.constants';
+
+export type AlertFlow = 'pre' | 'pending' | 'success' | 'failure';
 
 export interface IAlertsState {
     fetching: boolean,
     alerts: null | Array<IAlert>,
+    newAlertFlow: AlertFlow,
+    alertPendingDelete: null | number,
+    deleteAlertFlow: AlertFlow
     error: any
 }
 
 const initState : IAlertsState = {
     fetching: true,
     alerts: null,
+    alertPendingDelete: null,
+    newAlertFlow: 'pre',
+    deleteAlertFlow: 'pre',
     error: null
 }
 
@@ -51,6 +61,7 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
         case CREATE_ALERT_PENDING:
             return { 
                 ...state, 
+                newAlertFlow: 'pending',
                 fetching: true 
             }
             
@@ -62,6 +73,7 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
             return { 
                 ...state,
                 alerts: [ ...newAlerts ], 
+                newAlertFlow: 'success',
                 fetching: false
             }
 
@@ -69,12 +81,15 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
             return { 
                 ...state, 
                 fetching: false, 
+                newAlertFlow: 'failure',
                 error: action.payload
             }
         //DELTE ALERT
         case DELETE_ALERT_PENDING:
             return { 
                 ...state, 
+                deleteAlertFlow: 'pending',
+                alertPendingDelete: action.payload,
                 fetching: true 
             }
             
@@ -88,6 +103,8 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
             return { 
                 ...state,
                 alerts: [ ...deleteAlert ],
+                deleteAlertFlow: 'success',
+                alertPendingDelete: null,
                 fetching: false
             }
 
@@ -95,7 +112,22 @@ const alertsReducer = (state : IAlertsState = initState, action : AnyAction) => 
             return { 
                 ...state, 
                 fetching: false, 
+                deleteAlertFlow: 'failure',
+                alertPendingDelete: null,
                 error: action.payload
+            }
+
+        //RESET ALERT FLOW
+        case RESET_CREATE_ALERT_FLOW:
+            return {
+                ...state,
+                newAlertFlow: 'pre'
+            }
+        case RESET_DELETE_ALERT_FLOW:
+            return {
+                ...state,
+                deleteAlertFlow: 'pre',
+                alertPendingDelete: null
             }
         //DEFAULT
         default: 
