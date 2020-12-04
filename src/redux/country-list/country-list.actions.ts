@@ -12,8 +12,6 @@ import {
 export const getCountryList = () =>  (dispatch : Dispatch)  => {
     dispatch({ type: GET_COUNTRIES_PENDING });
 
-    headers['X-Access-Token'] = '5cf9dfd5-3449-485e-b5ae-70a60e997864';
-
     const axiosConfig : AxiosRequestConfig = { headers };
     
     axios.get(`${covidApiUrl}/summary`, axiosConfig)

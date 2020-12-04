@@ -4,17 +4,22 @@ import { IAlertsState } from './alerts.reducer';
 
 const selectAlerts = (state : AppState) => state.alerts;
 
-export const selectFirebaseToken = createSelector(
+export const selectActiveAlerts = createSelector(
     [selectAlerts],
-    (alerts : IAlertsState) => alerts.firebaseCloudMessageToken
+    (alerts : IAlertsState) =>  alerts.alerts
 );
 
-export const selectFirebaseTokenId = createSelector(
+export const selectNewAlertFlow = createSelector(
     [selectAlerts],
-    (alerts : IAlertsState) => alerts.fcmTokenAdminId
+    (alerts : IAlertsState) =>  alerts.newAlertFlow
 );
 
-export const selectDeviceId = createSelector(
+export const selectDeleteAlertFlow = createSelector(
     [selectAlerts],
-    (alerts : IAlertsState) => alerts.deviceId
+    (alerts : IAlertsState) => alerts.deleteAlertFlow
+);
+
+export const selectAlertPendingDelete = createSelector(
+    [selectAlerts],
+    (alerts : IAlertsState) => alerts.alertPendingDelete
 );

@@ -1,75 +1,75 @@
 import { StyleSheet } from 'react-native';
+import {appTextColour, appBorderStyle, appBorderWidth, appBorderRadius} from '../../utils/styles';
 
 const styles = StyleSheet.create({
+    border: {
+        borderBottomColor: appTextColour,
+        borderBottomWidth: 2,
+        alignItems: 'center'
+    },
     container: {
-        display: "flex",
-        marginBottom: 20,
-        borderBottomColor: "#e5e5e5",
-        borderBottomWidth: 3,
-        padding: 20
-    },
-    upperRow: {
-        display: "flex",
-        flexDirection: "row",
-        marginBottom: 15
-    },
-    coinSymbol: {
-        marginTop: 10,
-        marginLeft: 20,
-        marginRight: 5,
-        fontWeight: "bold",        
-    },
-    coinName: {
-        marginTop: 10,
+        flexDirection: 'row',
+        height: 150,
         marginLeft: 5,
-        marginRight: 20
+        marginRight: 5
     },
-    seperator: {
-        marginTop: 10,
+    imageColumn: {
+        flexDirection: 'row',
+        marginBottom: 15,
+        width: '30%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    coinPrice: {
-        marginTop: 10,
-        marginLeft: "auto",
-        marginRight: 10,
-        fontWeight: "bold",        
+    textColumn: {
+        width: '70%'
+    },
+    headingWrap: {
+        alignItems: 'center',
+    },
+    heading: {
+        fontSize: 24,
+        fontWeight: '600',
+        color: appTextColour,
+        textAlign: 'center'
+    },
+    dataWrap: {
+        flexDirection: 'row',
+        borderStyle: appBorderStyle,
+        borderWidth: appBorderWidth,
+        borderRadius: appBorderRadius,
+        borderColor: appTextColour,
+        margin: 20,
+        padding: 10
+    },
+    dataColumn: {
+        width: '50%'
+    },
+    dataHeadingText: {
+        textAlign: 'center',
+        color: appTextColour,
+        fontWeight: '600'
+    },
+    dataText: {
+        textAlign: 'center',
+        color: appTextColour,
     },
     image: {
-        width: 35,
-        height: 35,
-    },
-    moneySymbol: {
-        fontWeight: "bold",
-    },
-    statisticsContainer: {
-        display: "flex",
-        borderTopColor: "#FAFAFA",
-        borderTopWidth: 2,
-        padding: 10,
-        flexDirection: "row",
-        justifyContent: "space-around"
-    },
-    percentChangePlus: {
-        color: "#00BFA5",
-        fontWeight: "bold",
-        marginLeft: 5
-    },
-    percentChangeMinus: {
-        color: "#DD2C00",
-        fontWeight: "bold",
-        marginLeft: 5
+        width: '100%',
+        aspectRatio: 1
     }
 });
 
 export const { 
+    border,
     container,
     image,
-    moneySymbol,
-    upperRow,
-    coinSymbol,
-    coinName,
-    coinPrice,
-    statisticsContainer,
-    seperator,
-    percentChangePlus,
-    percentChangeMinus
+    imageColumn,
+    textColumn,
+    headingWrap,
+    heading,
+    dataWrap,
+    dataColumn,
+    dataHeadingText,
+    dataText
 } = styles;

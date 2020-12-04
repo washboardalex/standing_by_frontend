@@ -1,64 +1,101 @@
-import { getToken } from './alerts.utils';
 import { headers } from '../../utils/constants';
-import { Dispatch } from 'redux';
+import { AnyAction, Dispatch } from 'redux';
 import axios, { AxiosResponse, AxiosError } from 'axios';
-import messaging from '@react-native-firebase/messaging';
 import { adminUrl } from '../../utils/constants';
 import {
-    SET_FIREBASE_PENDING,
-    SET_FIREBASE_FAILURE,
-    SET_FIREBASE_SUCCESS,
-    SET_FIREBASE_ADMIN_PENDING,
-    SET_FIREBASE_ADMIN_FAILURE,
-    SET_FIREBASE_ADMIN_SUCCESS
+    GET_ALERTS_PENDING,
+    GET_ALERTS_FAILURE,
+    GET_ALERTS_SUCCESS,
+    CREATE_ALERT_PENDING,
+    CREATE_ALERT_FAILURE,
+    CREATE_ALERT_SUCCESS,
+    DELETE_ALERT_PENDING,
+    DELETE_ALERT_FAILURE,
+    DELETE_ALERT_SUCCESS,
+    RESET_CREATE_ALERT_FLOW,
+    RESET_DELETE_ALERT_FLOW
 } from './alerts.constants';
+import { AlertCondition, AlertType, IAlert } from '../../models/admin/IAlert';
+import { AlertFlow } from './alerts.reducer';
 
-export const getFirebaseToken = () => async (dispatch : Dispatch)  => {
+export const getActiveAlerts = (fcmTokAdminId : number) => async (dispatch : Dispatch)  => {
 
-    console.log("entering getFirebaseToken function")
-
-    dispatch({ type: SET_FIREBASE_PENDING });
-    
-    try {
-        const authorized = await messaging().hasPermission();
-        const token = await getToken();
-    
-        if (authorized) {
-            dispatch({ type: SET_FIREBASE_SUCCESS, payload: token });
-            return token;
-        }
-    
-        await messaging().requestPermission(); //I believe this is for ios only and thus not very important
-        
-        dispatch({ type: SET_FIREBASE_SUCCESS, payload: token });
-
-        console.log("already authorized, returning token")
-
-        return token;
-
-    } catch (error) {
-        dispatch({ type: SET_FIREBASE_FAILURE, payload: error });
-        console.error(error);
-    }
-}
-
-export const sendFirebaseTokentoAdminServer = (token : string, deviceId: string) => ( dispatch: Dispatch ) => {
-    console.log("sending firebase token to admin server");
-    console.log("tis is the endpoint, with a post request: ", `${adminUrl}/token`)
-    dispatch({ type: SET_FIREBASE_ADMIN_PENDING });
+    dispatch({ type: GET_ALERTS_PENDING });
     axios({
-        method: 'post',
-        url: `${adminUrl}/token`,
-        headers: headers,
-        data: { token, deviceId }
+        method: 'get',
+        url: `${adminUrl}/alert/read/${fcmTokAdminId}`,
+        headers: headers
     })
     .then(function (response : AxiosResponse) {
-        dispatch({ type: SET_FIREBASE_ADMIN_SUCCESS, payload: response.data.fcm_token_id });
+        dispatch({ type: GET_ALERTS_SUCCESS, payload: response.data });
     })
     .catch(function (error : AxiosError) {
-        console.log("got an error");
-        dispatch({ type: SET_FIREBASE_ADMIN_FAILURE, payload: error });
+        dispatch({ type: GET_ALERTS_FAILURE, payload: error });
         console.error(error);
     });
-    
 }
+
+export const createNewAlert = (country : string, condition : AlertCondition, value : number, 
+            type : AlertType, cloudMessageToken : string | null, fcmTokenId : number | null, countrySlug : string) => async (dispatch : Dispatch) => {
+
+    const newAlert : IAlert = {
+        condition,
+        value,
+        countrySlug,
+        type,
+        country
+    }
+
+    dispatch({ type: CREATE_ALERT_PENDING });
+
+    axios({
+        method: 'post',
+        url: `${adminUrl}/alert/create`,
+        headers: headers,
+        data: { 
+            newAlert,
+            token: cloudMessageToken,
+            tokenId: fcmTokenId
+        }
+    })
+    .then((response : AxiosResponse) => {
+        dispatch({ type: CREATE_ALERT_SUCCESS, payload: response.data });
+    })
+    .catch((error : AxiosError) => {
+        console.error(error);
+        dispatch({ type: CREATE_ALERT_FAILURE, payload: error });
+    });
+}
+
+export const deleteAlert = (alertId : number, fcmTokAdminId : number) => async (dispatch : Dispatch) => {
+
+    dispatch({ type: DELETE_ALERT_PENDING, payload: alertId });
+    axios({
+        method: 'post',
+        url: `${adminUrl}/alert/delete`,
+        headers: headers,
+        data: { 
+            alertId: alertId, 
+            fcmTokenId: fcmTokAdminId 
+        }
+    })
+    .then(function (response : AxiosResponse) {
+        dispatch({ type: DELETE_ALERT_SUCCESS, payload: response.data });
+    })
+    .catch(function (error : AxiosError) {
+        dispatch({ type: DELETE_ALERT_FAILURE, payload: error });
+        console.error(error);
+    });
+}
+
+export const resetCreateAlertFlow = () : AnyAction => ({
+    type: RESET_CREATE_ALERT_FLOW,
+    payload: 'pre' as AlertFlow
+}); 
+
+export const resetDeleteAlertFlow = () : AnyAction => ({
+    type: RESET_DELETE_ALERT_FLOW,
+    payload: 'pre' as AlertFlow
+}); 
+
+

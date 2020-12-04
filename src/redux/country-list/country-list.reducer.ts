@@ -4,7 +4,7 @@ import {
     GET_COUNTRIES_SUCCESS,
     GET_COUNTRIES_FAILURE
 } from './country-list.constants';
-import ICountrySummary from '../../models/covidapi/ICountrySummarySummary';
+import ICountrySummary from '../../models/covidapi/ICountrySummary';
 import {formatCountries, sortCountriesByDailyConfirmed} from './country-list.utils';
 
 export interface ICountrySummaryListState {
