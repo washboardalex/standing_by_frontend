@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, NavigatorIOS } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { fArgReturn, fEmptyReturn } from '../../utils/types';
 import { createStructuredSelector } from 'reselect';
@@ -8,25 +8,26 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '../../redux/root-reducer';
 import { selectFirebaseToken, selectDeviceId, selectFirebaseTokenId } from '../../redux/firebase/firebase.selectors';
 import { getActiveAlerts } from '../../redux/alerts/alerts.actions';
-import { selectActiveAlerts } from '../../redux/alerts/alerts.selectors';
+import { selectActiveAlerts, selectAlertsFetching } from '../../redux/alerts/alerts.selectors';
 import { getFirebaseToken, sendFirebaseTokentoAdminServer } from '../../redux/firebase/firebase.actions';
 import { IAlert } from '../../models/admin/IAlert';
 import { FlatList } from 'react-native-gesture-handler';
-import { selectCountries } from '../../redux/country-list/country-list.selectors';
+import { selectCountries, selectCountriesFetching } from '../../redux/country-list/country-list.selectors';
 import AlertSummary from '../../components/alert-summary/alert-summary.component';
 import ICountrySummary from '../../models/covidapi/ICountrySummary';
 import { getCountryList } from '../../redux/country-list/country-list.actions';
 import styles from './active-alerts.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { appTextColour } from '../../utils/styles';
-import { NavigationActions } from 'react-navigation';
+import { appBackgroundColour, appTextColour } from '../../utils/styles';
 
 interface IReduxStateProps {
     firebaseCloudMessageToken: null | string,
     fcmTokenAdminId: null | number,
     deviceId: string,
     alerts: null | Array<IAlert>,
-    countries: Array<ICountrySummary>
+    countries: Array<ICountrySummary>,
+    isAlertsFetching: boolean,
+    isCountriesFetching: boolean
 }
 
 interface IDispatchProps {
@@ -64,10 +65,6 @@ class ActiveAlerts extends React.Component<ActiveAlertsProps> {
         if (fcmTokenAdminId) 
             await getActiveAlerts(fcmTokenAdminId);
 
-        console.log('countries are: ')
-        console.log(countries)
-        console.log('');console.log('');console.log('');console.log('');console.log('');console.log('');
-
         if (!countries.length) 
             getCountryList();
     }
@@ -82,8 +79,16 @@ class ActiveAlerts extends React.Component<ActiveAlertsProps> {
 
     render() {
 
-        const { alerts, navigation } = this.props;
-        const { container, noAlerts, text } = styles;
+        const { alerts, navigation, isAlertsFetching, isCountriesFetching } = this.props;
+        const { container, noAlerts, text, loadingContainer } = styles;
+
+        if (isAlertsFetching) {
+            return (
+                <View style={loadingContainer}>
+                    <Icon name='hourglass-outline' style={{marginTop: '30%'}} size={128} color={appTextColour} />
+                </View>
+            )
+        }
 
         return (
             <View style={container}>
@@ -115,11 +120,13 @@ class ActiveAlerts extends React.Component<ActiveAlertsProps> {
 
 
 const mapStateToProps = createStructuredSelector<AppState, IReduxStateProps>({
+    isAlertsFetching: selectAlertsFetching,
     firebaseCloudMessageToken: selectFirebaseToken,
     fcmTokenAdminId: selectFirebaseTokenId,
     deviceId: selectDeviceId,
     alerts: selectActiveAlerts,
-    countries: selectCountries
+    countries: selectCountries,
+    isCountriesFetching: selectCountriesFetching
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction> | Dispatch<AnyAction>) => ({

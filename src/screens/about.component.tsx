@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
 const AboutApp : React.FC<IReactNavigationProps> = ({navigation}) => (
     <View style={{ flex: 1, backgroundColor: appBackgroundColour}}>
         <Text style={styles.paragraph}>
-            This app is designed for time poor individuals or those who need to keep track of coronavirus numbers in countries not typically covered by Australian news.
+            This app allows you to passively track the progress of Coronavirus in any country, by alerting you when daily cases or deaths reach a certain number.
         </Text>
         <Text></Text>
         <Text style={styles.paragraph}>
-            Data is taken from John Hopkins University, and is updated every few days. With sufficient demand, more data sources will be incorporated in future updates.
+            Data is taken from John Hopkins University, updated daily. With sufficient demand, more data sources will be incorporated in future updates.
         </Text>
         <Text></Text>
         <Text style={styles.paragraph}>

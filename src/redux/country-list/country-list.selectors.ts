@@ -14,4 +14,9 @@ export const selectCountries = createSelector(
 export const selectCountriesAlphabetical = createSelector(
     [selectCountryListState],
     (countryList : ICountrySummaryListState) : Array<ICountrySummary> => countryList.data.length ? sortCountriesAlphabetical([...countryList.data]) : []
-)
+);
+
+export const selectCountriesFetching = createSelector(
+    [selectCountryListState],
+    (countryList : ICountrySummaryListState) : boolean => countryList.fetching
+);
