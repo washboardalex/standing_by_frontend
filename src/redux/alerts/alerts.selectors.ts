@@ -23,3 +23,9 @@ export const selectAlertPendingDelete = createSelector(
     [selectAlerts],
     (alerts : IAlertsState) => alerts.alertPendingDelete
 );
+
+export const selectAlertsFetching = createSelector(
+    [selectAlerts],
+    (alerts : IAlertsState) => alerts.fetching
+)
+

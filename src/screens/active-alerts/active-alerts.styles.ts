@@ -16,6 +16,12 @@ const styles = StyleSheet.create({
         color: appTextColour,
         fontSize: 32,
         marginBottom: 15
+    },
+    loadingContainer: {
+        height: '100%', 
+        width: '100%', 
+        backgroundColor: appBackgroundColour, 
+        alignItems: 'center'
     }
 });
 
